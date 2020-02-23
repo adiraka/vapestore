@@ -12,13 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return 'Home Page';
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::prefix('admin')->group(function() {
-    
+    Route::middleware(['guest'])->group(function() {
+        Route::get('login', 'Admin\AuthController@getLoginPage')->name('admin.getLogin');
+        Route::post('login', 'Admin\AuthController@postLogin')->name('admin.postLogin');
+    });
+
+    Route::middleware(['auth'])->group(function() {
+        Route::get('dashboard', 'Admin\DashboardController@getDashboard')->name('admin.dashboard');
+
+        Route::post('logout', 'Admin\AuthController@logout')->name('admin.logout');
+    });
 });

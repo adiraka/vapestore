@@ -175,53 +175,73 @@ return [
     'menu' => [
         ['header' => 'MENU UTAMA'],
         [
-            'text' => 'PRODUK',
-            'url'  => 'admin/product',
+            'text' => 'Merk',
+            'url'  => 'admin/merks',
+            'icon' => 'fas fa-fw fa-tag',
+        ],
+        [
+            'text' => 'Color',
+            'url'  => 'admin/colors',
+            'icon' => 'fas fa-fw fa-tag',
+        ],
+        [
+            'text' => 'Product',
+            'url'  => 'admin/products',
+            'icon' => 'fas fa-fw fa-shopping-cart',
+        ],
+        [
+            'text' => 'Payment',
+            'url'  => 'admin/payments',
+            'icon' => 'fas fa-fw fa-book',
+        ],
+        [
+            'text' => 'Order',
+            'url'  => 'admin/orders',
+            'icon' => 'fas fa-fw fa-book',
+        ],
+        [
+            'text' => 'Customer',
+            'url'  => 'admin/cutomers',
             'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'TRANSAKSI',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
+        ]
+        // [
+        //     'text'    => 'multilevel',
+        //     'icon'    => 'fas fa-fw fa-share',
+        //     'submenu' => [
+        //         [
+        //             'text' => 'level_one',
+        //             'url'  => '#',
+        //         ],
+        //         [
+        //             'text'    => 'level_one',
+        //             'url'     => '#',
+        //             'submenu' => [
+        //                 [
+        //                     'text' => 'level_two',
+        //                     'url'  => '#',
+        //                 ],
+        //                 [
+        //                     'text'    => 'level_two',
+        //                     'url'     => '#',
+        //                     'submenu' => [
+        //                         [
+        //                             'text' => 'level_three',
+        //                             'url'  => '#',
+        //                         ],
+        //                         [
+        //                             'text' => 'level_three',
+        //                             'url'  => '#',
+        //                         ],
+        //                     ],
+        //                 ],
+        //             ],
+        //         ],
+        //         [
+        //             'text' => 'level_one',
+        //             'url'  => '#',
+        //         ],
+        //     ],
+        // ],
     ],
 
     /*

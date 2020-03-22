@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Util\Constant;
 use Session;
 
 class AuthController extends Controller
@@ -23,9 +24,14 @@ class AuthController extends Controller
         ]);
 
         $credentials = $request->only('email', 'password');
-        $attemptAuth = Auth::attempt($credentials);
 
-        if ($attemptAuth) {
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+
+            if ($user->role != Constant::USER_ROLE_ADMIN) {
+                self::logout();
+            }
+
             return redirect()->route('admin.dashboard');
         }
 

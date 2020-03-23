@@ -29,5 +29,10 @@ Route::prefix('admin')->group(function() {
         Route::get('merksData', 'Admin\MerkController@indexData')->name('merk.indexData');
         Route::get('merk/{id?}', 'Admin\MerkController@detail')->name('merk.detail');
         Route::post('merk/{id?}', 'Admin\MerkController@save')->name('merk.save');
+
+        Route::get('colors', 'Admin\ColorController@index')->name('color.index');
+        Route::get('colorsData', 'Admin\ColorController@indexData')->name('color.indexData');
+        Route::get('color/{id?}', 'Admin\ColorController@detail')->name('color.detail');
+        Route::post('color/{id?}', 'Admin\ColorController@save')->name('color.save');
     });
 });

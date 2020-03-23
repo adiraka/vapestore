@@ -23,7 +23,11 @@ Route::prefix('admin')->group(function() {
 
     Route::middleware(['auth'])->group(function() {
         Route::get('dashboard', 'Admin\DashboardController@getDashboard')->name('admin.dashboard');
-
         Route::post('logout', 'Admin\AuthController@logout')->name('admin.logout');
+
+        Route::get('merks', 'Admin\MerkController@index')->name('merk.index');
+        Route::get('merksData', 'Admin\MerkController@indexData')->name('merk.indexData');
+        Route::get('merk/{id?}', 'Admin\MerkController@detail')->name('merk.detail');
+        Route::post('merk/{id?}', 'Admin\MerkController@save')->name('merk.save');
     });
 });

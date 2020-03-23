@@ -3,8 +3,9 @@
 namespace App\Model;
 
 use App\Model\Varian;
+use Illuminate\Database\Eloquent\Model;
 
-class Color
+class Color extends Model
 {
     protected $table = 'colors';
 

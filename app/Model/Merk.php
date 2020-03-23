@@ -3,8 +3,9 @@
 namespace App\Model;
 
 use App\Model\Product;
+use Illuminate\Database\Eloquent\Model;
 
-class Merk
+class Merk extends Model
 {
     protected $table = 'merks';
 

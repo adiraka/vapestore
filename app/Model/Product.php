@@ -4,8 +4,9 @@ namespace App\Model;
 
 use App\Model\Merk;
 use App\Model\Varian;
+use Illuminate\Database\Eloquent\Model;
 
-class Product
+class Product extends Model
 {
     protected $table = 'products';
 

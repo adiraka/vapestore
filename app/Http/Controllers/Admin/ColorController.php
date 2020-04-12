@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Model\Color;
 
+use Response;
 use Validator;
 use DataTables;
 use App\Util\Constant;
@@ -69,5 +70,23 @@ class ColorController extends Controller
     	$color->save();
 
     	return redirect()->route('color.index');
+    }
+
+    public function find(Request $request) {
+        $term = trim($request->q);
+
+        if (empty($term)) {
+            return Response::json([]);
+        }
+
+        $colors = Color::where('name', 'LIKE', '%'.$term.'%')->get();
+
+        $formatted_colors = [];
+
+        foreach ($colors as $color) {
+            $formatted_colors[] = ['id' => $color->id, 'text' => $color->name];
+        }
+
+        return Response::json($formatted_colors);
     }
 }

@@ -175,6 +175,11 @@ return [
     'menu' => [
         ['header' => 'MENU UTAMA'],
         [
+            'text' => 'Dashboard',
+            'url'  => 'admin/dashboard',
+            'icon' => 'fas fa-fw fa-home',
+        ],
+        [
             'text' => 'Merk',
             'url'  => 'admin/merks',
             'icon' => 'fas fa-fw fa-tag',
@@ -197,6 +202,11 @@ return [
         [
             'text' => 'Order',
             'url'  => 'admin/orders',
+            'icon' => 'fas fa-fw fa-book',
+        ],
+        [
+            'text' => 'Purchase',
+            'url'  => 'admin/purchases',
             'icon' => 'fas fa-fw fa-book',
         ],
         [

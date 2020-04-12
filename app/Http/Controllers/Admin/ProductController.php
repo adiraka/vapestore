@@ -5,63 +5,37 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Model\Product;
+
+use Validator;
+use DataTables;
+use App\Util\Constant;
+
 class ProductController extends Controller
 {
-	public function __construct() {
-		$this->middleware('auth');
-	}
-
 	public function index() {
-
+        return view('admin.product.index');
 	}
 
-	public function data() {
+	public function indexData() {
 		
 	}
 
 	public function detail($id = 0) {
 		if (empty($id)) {
-			$antrian = new Antrian;
+			$product = new Product;
     	} else {
-    		$antrian = Antrian::find($id);	
+    		$product = Product::find($id);	
     	}
     	
-    	if (empty($antrian)) abort(404);
+    	if (empty($product)) abort(404);
 
-    	return view('antrian.detail', [
-    		'antrian' => $antrian,
-    		'listPasien' => Pasien::all()
+    	return view('admin.product.detail', [
+    		'product' => $product
     	]);
 	}
 
 	public function save($id = 0) {
-		if (empty($id)) {
-			$antrian = new Antrian;
-    	} else {
-    		$antrian = Antrian::find($id);	
-    	}
-    	
-    	if (empty($antrian)) abort(404);
-
-    	$validator = Validator::make(request()->all(), [
-    		'pasien_id' => 'required',
-    		'tanggal' => 'required',
-    		'daftar' => 'required',
-    		'layanan' => 'required',
-    		'selesai' => 'required',
-    	]);
-
-    	if ($validator->fails()) return redirect()->back()->withErrors($validator)->withInput();
-
-    	$data = (object)request()->all();
-
-    	$antrian->pasien_id = $data->pasien_id;
-    	$antrian->tanggal = $data->tanggal;
-    	$antrian->daftar = $data->daftar;
-    	$antrian->layanan = $data->layanan;
-    	$antrian->selesai = $data->selesai;
-    	$antrian->save();
-
-    	return redirect()->route('antrian.index');
+		
 	}
 }

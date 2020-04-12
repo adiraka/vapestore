@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Model\Merk;
 
+use Response;
 use Validator;
 use DataTables;
 use App\Util\Constant;
@@ -79,5 +80,23 @@ class MerkController extends Controller
     	$merk->save();
 
     	return redirect()->route('merk.index');
+    }
+
+    public function find(Request $request) {
+        $term = trim($request->q);
+
+        if (empty($term)) {
+            return Response::json([]);
+        }
+
+        $merks = Merk::where('name', 'LIKE', '%'.$term.'%')->get();
+
+        $formatted_merks = [];
+
+        foreach ($merks as $merk) {
+            $formatted_merks[] = ['id' => $merk->id, 'text' => $merk->name];
+        }
+
+        return Response::json($formatted_merks);
     }
 }

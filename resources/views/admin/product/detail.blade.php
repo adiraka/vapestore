@@ -150,7 +150,7 @@
 
 					                            <div class="col-md-8">
 					                            	<div class="input-group">
-					                            		<input id="volume" type="number" class="form-control" name="volume[]" value="">
+					                            		<input id="volume" type="number" step="0.01" min="0" class="form-control" name="volume[]" value="">
 					                            		<div class="input-group-append">
 															<span class="input-group-text" id="basic-addon2">ml</span>
 														</div>
@@ -162,7 +162,7 @@
 
 					                            <div class="col-md-8">
 					                            	<div class="input-group">
-					                            		<input id="nicotin" type="number" class="form-control" name="nicotin[]" value="">
+					                            		<input id="nicotin" type="number" step="0.01" min="0" class="form-control" name="nicotin[]" value="">
 					                            		<div class="input-group-append">
 															<span class="input-group-text" id="basic-addon2">mg</span>
 														</div>
@@ -180,7 +180,7 @@
 					                            <label for="image" class="col-md-4 control-label">Image</label>
 												
 					                            <div class="col-md-8">
-					                                <input type="file" class="form-control" name="thumbnail[]">
+					                                <input type="file" class="form-control" name="image[]">
 					                            </div>
 					                        </div>
 						        		</div>
@@ -262,13 +262,11 @@
 			initTypeSelect();
 
 			$('#add-varian-btn').on('click', function() {
-				$('.varian-list').append(generateVarianDetail());
+				$('.varian-list').append(generateVarianDetail()).on('click', '.btn-remove', function() {
+					removeVarian($(this));
+				});
 				setProductType();
 				initColorSelect();
-			});
-
-			$('.btn-remove').on('change', function() {
-				
 			});
 		});
 
@@ -309,7 +307,7 @@
 		}
 
 		function generateVarianDetail() {
-			let string = '<div class="col-md-12">' +
+			let string = '<div class="col-md-12 varian-detail">' +
 				'<div class="card">' +
 			      	'<div class="card-body">' +
 			        	'<div class="row">' +
@@ -335,7 +333,7 @@
 
 		                            '<div class="col-md-8">' +
 		                            	'<div class="input-group">' +
-		                            		'<input id="volume" type="number" class="form-control" name="volume[]" value="">' +
+		                            		'<input id="volume" type="number" step="0.01" min="0" class="form-control" name="volume[]" value="">' +
 		                            		'<div class="input-group-append">' +
 												'<span class="input-group-text" id="basic-addon2">ml</span>' +
 											'</div>' +
@@ -347,7 +345,7 @@
 
 		                            '<div class="col-md-8">' +
 		                            	'<div class="input-group">' +
-		                            		'<input id="nicotin" type="number" class="form-control" name="nicotin[]" value="">' +
+		                            		'<input id="nicotin" type="number" step="0.01" min="0" class="form-control" name="nicotin[]" value="">' +
 		                            		'<div class="input-group-append">' +
 												'<span class="input-group-text" id="basic-addon2">mg</span>' +
 											'</div>' +
@@ -365,7 +363,7 @@
 		                            '<label for="image" class="col-md-4 control-label">Image</label>' +
 									
 		                            '<div class="col-md-8">' +
-		                                '<input type="file" class="form-control" name="thumbnail[]">' +
+		                                '<input type="file" class="form-control" name="image[]">' +
 		                            '</div>' +
 		                        '</div>' +
 		                        '<div class="form-group row">' +
@@ -410,6 +408,11 @@
 				width: '100%',
 				placeholder: "Select Type..."
 			});
+		}
+
+		function removeVarian($this) {
+			let parent = $this.closest('.varian-detail');
+			parent.remove();
 		}
 	</script>
 @stop

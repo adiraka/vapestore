@@ -18,7 +18,15 @@ class ProductController extends Controller
 	}
 
 	public function indexData() {
-		
+		$listData = Product::select(['*'])->get();
+		$dataTables = Datatables::of($listData)
+						->addColumn('action', function($product) {
+							return '
+								<a href="'.route('product.detail', ['id' => $product->id]).'" class="btn btn-xs btn-success">Update</a>				
+    						';
+						})
+						->make(true);
+		return $dataTables;
 	}
 
 	public function detail($id = 0) {

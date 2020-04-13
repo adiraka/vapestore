@@ -22,6 +22,8 @@
 									<th>ID</th>
 									<th>Code</th>
 									<th>Name</th>
+									<th>Category</th>
+									<th>Type</th>
 									<th>Status</th>
 									<th>Action</th>
 								</thead>
@@ -45,24 +47,26 @@
 	<script>
 		$(function() {
 			$('#product-table').DataTable({
-				// dom: 'Bfrtip',
-				// processing: true,
-				// serverSide: true,
-				// responsive: true,
+				dom: 'Bfrtip',
+				processing: true,
+				serverSide: true,
+				responsive: true,
 				// language: {
 				// 	url: 'https://cdn.datatables.net/plug-ins/1.10.19/i18n/Indonesian.json'
 				// },
-				// buttons: [
-		  //           'csv', 'excel', 'pdf', 'print'
-		  //       ],
-				{{-- ajax: '{{ route('merk.indexData') }}', --}}
-				// columns: [
-				// 	{ data: 'id', name: 'id' },
-				// 	{ data: 'code', name: 'code' },
-				// 	{ data: 'name', name: 'name' },
-				// 	{ data: 'status', name: 'status' },
-				// 	{ data: 'action', name: 'action' },
-				// ]
+				buttons: [
+		            'csv', 'excel', 'pdf', 'print'
+		        ],
+				ajax: '{{ route('product.indexData') }}',
+				columns: [
+					{ data: 'id', name: 'id' },
+					{ data: 'code', name: 'code' },
+					{ data: 'name', name: 'name' },
+					{ data: 'category', name: 'category' },
+					{ data: 'type', name: 'type' },
+					{ data: 'status', name: 'status' },
+					{ data: 'action', name: 'action' },
+				]
 			});
 		});
 	</script>

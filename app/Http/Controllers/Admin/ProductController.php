@@ -35,7 +35,34 @@ class ProductController extends Controller
     	]);
 	}
 
-	public function save($id = 0) {
-		
+	public function save($id = 0, Request $request) {
+		$data = (object)$request->all();
+
+		if (empty($id)) {
+			$product = new Product;
+    	} else {
+    		$product = Product::find($id);	
+    	}
+
+    	$product->merk_id = $data->merk_id;
+    	$product->type = $data->type;
+    	$product->code = $data->code;
+    	$product->name = $data->name;
+    	$product->description = $data->description;
+    	$product->category = $data->category;
+    	$product->status = Constant::STATUS_ACTIVE;
+
+    	if (!empty($data->thumbnail)) {
+			$thumbnailName = time().'.'.$request->thumbnail->extension();  
+	    	$upload = $request->thumbnail->move(public_path('upload'), $thumbnailName);
+
+	    	if ($upload) {
+	    		$product->thumbnail = $thumbnailName;
+	    	}
+        }
+
+    	$product->save();
+
+    	return redirect()->route('product.detail', ['id' => $product->id]);
 	}
 }

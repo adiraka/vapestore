@@ -78,4 +78,23 @@ class Constant {
     	self::DRIP_TIP_TYPE_810 => '810',
     	self::DRIP_TIP_TYPE_510 => '510'
     ];
+
+
+    const ALL_TYPE_LABEL = [
+    	self::LIQUID_TYPE_FREEBASE => 'Freebase',
+    	self::LIQUID_TYPE_SALTNIC => 'SaltNic',
+    	self::DEVICE_TYPE_ELECTRICAL => 'Electrical',
+    	self::DEVICE_TYPE_MECHA => 'Mecha',
+    	self::DEVICE_TYPE_POD => 'Pod',
+    	self::COTTON_TYPE_KENDO => 'Kendo',
+    	self::COTTON_TYPE_BACON => 'Bacon',
+    	self::COTTON_TYPE_MORPHIN => 'Morphin',
+    	self::COTTON_TYPE_ATOMIX => 'Atomix',
+    	self::COIL_TYPE_FUSED => 'Fused Clapton',
+    	self::COIL_TYPE_ALIEN_FUSED => 'Alien Fused Clapton',
+    	self::AUTOMIZER_TYPE_RDA => 'RDA',
+    	self::AUTOMIZER_TYPE_RTA => 'RTA',
+    	self::DRIP_TIP_TYPE_810 => '810',
+    	self::DRIP_TIP_TYPE_510 => '510'
+    ];
 }

@@ -67,7 +67,7 @@
 
 	                            <div class="col-md-8">
 	                            	<select name="merk_id" id="merk-select" required>
-	                            		@if (!empty($id))
+	                            		@if (!empty($product->id))
 	                            			<option value="{{ $product->merk->id }}" selected>{{ $product->merk->name }}</option>
 	                            		@endif
 	                            	</select>
@@ -116,82 +116,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6 col-sm-12">
-			<div class="card">
-				<div class="card-header">
-					Product Varian
-					<buttont class="btn btn-success btn-sm float-right" id="add-varian-btn" type="button">Add Varian</buttont>
-				</div>
-				<div class="card-body">
-					<div class="row varian-list">
-						<div class="col-md-12">
-							<div class="card">
-						      	<div class="card-body">
-						        	<div class="row">
-						        		<div class="col-md-12">
-					                        <div class="form-group row">
-					                            <label for="size" class="col-md-4 control-label">Color</label>
-
-					                            <div class="col-md-8">
-					                                <select name="color[]" id="" class="form-control color-select">
-					                                	
-					                                </select>
-					                            </div>
-					                        </div>
-						        			<div class="form-group row">
-					                            <label for="size" class="col-md-4 control-label">Size</label>
-
-					                            <div class="col-md-8">
-					                                <input id="size" type="text" class="form-control" name="size[]" value="">
-					                            </div>
-					                        </div>
-					                        <div class="form-group row">
-					                            <label for="volume" class="col-md-4 control-label">Volume</label>
-
-					                            <div class="col-md-8">
-					                            	<div class="input-group">
-					                            		<input id="volume" type="number" step="0.01" min="0" class="form-control" name="volume[]" value="">
-					                            		<div class="input-group-append">
-															<span class="input-group-text" id="basic-addon2">ml</span>
-														</div>
-					                            	</div>
-					                            </div>
-					                        </div>
-					                        <div class="form-group row">
-					                            <label for="nicotin" class="col-md-4 control-label">Nicotin</label>
-
-					                            <div class="col-md-8">
-					                            	<div class="input-group">
-					                            		<input id="nicotin" type="number" step="0.01" min="0" class="form-control" name="nicotin[]" value="">
-					                            		<div class="input-group-append">
-															<span class="input-group-text" id="basic-addon2">mg</span>
-														</div>
-					                            	</div>
-					                            </div>
-					                        </div>
-					                        <div class="form-group row">
-					                            <label for="quantity" class="col-md-4 control-label">Quantity</label>
-
-					                            <div class="col-md-8">
-					                                <input id="quantity" type="number" class="form-control" name="quantity[]" value="">
-					                            </div>
-					                        </div>
-					                        <div class="form-group row">
-					                            <label for="image" class="col-md-4 control-label">Image</label>
-												
-					                            <div class="col-md-8">
-					                                <input type="file" class="form-control" name="image[]">
-					                            </div>
-					                        </div>
-						        		</div>
-						        	</div>
-						      	</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 	</div>
 </form>
 @stop
@@ -210,6 +134,7 @@
 		var coilList = {!! json_encode($constant::COIL_TYPE_LIST) !!};
 		var automizerList = {!! json_encode($constant::AUTOMIZER_TYPE_LIST) !!};
 		var dripTipList = {!! json_encode($constant::DRIP_TIP_TYPE_LIST) !!};
+		var productType = '{{ $product->type }}';
 
 		$(function() {
 			function readURL(input) {
@@ -257,17 +182,13 @@
 	                cache: true
 	            }
 			});
-
-			initColorSelect();
+			
 			initTypeSelect();
 
-			$('#add-varian-btn').on('click', function() {
-				$('.varian-list').append(generateVarianDetail()).on('click', '.btn-remove', function() {
-					removeVarian($(this));
-				});
+			if (productType != '') {
 				setProductType();
-				initColorSelect();
-			});
+				$('#type-select').val(productType).trigger('change');	
+			}
 		});
 
 		function setProductType() {
@@ -306,80 +227,6 @@
 			return string;
 		}
 
-		function generateVarianDetail() {
-			let string = '<div class="col-md-12 varian-detail">' +
-				'<div class="card">' +
-			      	'<div class="card-body">' +
-			        	'<div class="row">' +
-			        		'<div class="col-md-12">' +
-		                        '<div class="form-group row">' +
-		                            '<label for="size" class="col-md-4 control-label">Color</label>' +
-
-		                            '<div class="col-md-8">' +
-		                                '<select name="color[]" id="" class="form-control color-select">' +
-		                                	
-		                                '</select>' +
-		                            '</div>' +
-		                        '</div>' +
-			        			'<div class="form-group row">' +
-		                            '<label for="size" class="col-md-4 control-label">Size</label>' +
-
-		                            '<div class="col-md-8">' +
-		                                '<input id="size" type="text" class="form-control" name="size[]" value="">' +
-		                            '</div>' +
-		                        '</div>' +
-		                        '<div class="form-group row">' +
-		                            '<label for="volume" class="col-md-4 control-label">Volume</label>' +
-
-		                            '<div class="col-md-8">' +
-		                            	'<div class="input-group">' +
-		                            		'<input id="volume" type="number" step="0.01" min="0" class="form-control" name="volume[]" value="">' +
-		                            		'<div class="input-group-append">' +
-												'<span class="input-group-text" id="basic-addon2">ml</span>' +
-											'</div>' +
-		                            	'</div>' +
-		                            '</div>' +
-		                        '</div>' +
-		                        '<div class="form-group row">' +
-		                            '<label for="nicotin" class="col-md-4 control-label">Nicotin</label>' +
-
-		                            '<div class="col-md-8">' +
-		                            	'<div class="input-group">' +
-		                            		'<input id="nicotin" type="number" step="0.01" min="0" class="form-control" name="nicotin[]" value="">' +
-		                            		'<div class="input-group-append">' +
-												'<span class="input-group-text" id="basic-addon2">mg</span>' +
-											'</div>' +
-		                            	'</div>' +
-		                            '</div>' +
-		                        '</div>' +
-		                        '<div class="form-group row">' +
-		                            '<label for="quantity" class="col-md-4 control-label">Quantity</label>' +
-
-		                            '<div class="col-md-8">' +
-		                                '<input id="quantity" type="number" class="form-control" name="quantity[]" value="">' +
-		                            '</div>' +
-		                        '</div>' +
-		                        '<div class="form-group row">' +
-		                            '<label for="image" class="col-md-4 control-label">Image</label>' +
-									
-		                            '<div class="col-md-8">' +
-		                                '<input type="file" class="form-control" name="image[]">' +
-		                            '</div>' +
-		                        '</div>' +
-		                        '<div class="form-group row">' +
-		                        	'<div class="col-md-12 text-right">' +
-		                        		'<button type="button" class="btn btn-danger btn-remove">Remove</button>' +
-		                        	'</div>' +
-		                        '</div>' +
-			        		'</div>' +
-			        	'</div>' +
-			      	'</div>' +
-				'</div>' +
-			'</div>';
-
-			return string;
-		}
-
 		function initColorSelect() {
 			$('.color-select').select2({
 				width: '100%',
@@ -408,11 +255,6 @@
 				width: '100%',
 				placeholder: "Select Type..."
 			});
-		}
-
-		function removeVarian($this) {
-			let parent = $this.closest('.varian-detail');
-			parent.remove();
 		}
 	</script>
 @stop

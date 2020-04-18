@@ -39,7 +39,13 @@ Route::prefix('admin')->group(function() {
 
         Route::get('products', 'Admin\ProductController@index')->name('product.index');
         Route::get('productsData', 'Admin\ProductController@indexData')->name('product.indexData');
+        Route::get('product/changeStatus/{id?}', 'Admin\ProductController@changeStatus')->name('product.changeStatus');
         Route::get('product/{id?}', 'Admin\ProductController@detail')->name('product.detail');
         Route::post('product/{id?}', 'Admin\ProductController@save')->name('product.save');
+
+        Route::get('variansData/{productId?}', 'Admin\VarianController@indexData')->name('varian.indexData');
+        Route::get('varian/changeStatus/{id?}', 'Admin\VarianController@changeStatus')->name('varian.changeStatus');
+        Route::get('varian/{id?}/{productId?}', 'Admin\VarianController@detail')->name('varian.detail');
+        Route::post('varian/{id?}/{productId?}', 'Admin\VarianController@save')->name('varian.save');
     });
 });

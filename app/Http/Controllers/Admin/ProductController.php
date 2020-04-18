@@ -22,7 +22,8 @@ class ProductController extends Controller
 		$dataTables = Datatables::of($listData)
 						->addColumn('action', function($product) {
 							return '
-								<a href="'.route('product.detail', ['id' => $product->id]).'" class="btn btn-xs btn-success">Update</a>				
+								<a href="'.route('product.detail', ['id' => $product->id]).'" class="btn btn-xs btn-success">Update</a> &nbsp; 
+								<a href="'.route('product.changeStatus', ['id' => $product->id]).'" class="btn btn-xs btn-warning">Change Status</a>	
     						';
 						})
 						->make(true);
@@ -58,8 +59,11 @@ class ProductController extends Controller
     	$product->name = $data->name;
     	$product->description = $data->description;
     	$product->category = $data->category;
-    	$product->status = Constant::STATUS_ACTIVE;
 
+    	if (empty($id)) {
+			$product->status = Constant::STATUS_ACTIVE;
+    	}
+    	
     	if (!empty($data->thumbnail)) {
 			$thumbnailName = time().'.'.$request->thumbnail->extension();  
 	    	$upload = $request->thumbnail->move(public_path('upload'), $thumbnailName);
@@ -72,5 +76,27 @@ class ProductController extends Controller
     	$product->save();
 
     	return redirect()->route('product.detail', ['id' => $product->id]);
+	}
+
+	public function changeStatus($id = 0) {
+		if (empty($id)) {
+			return redirect()->back()->withErrors([
+				'Product ID cannnot be NULL!'
+			]);
+		}
+
+		$product = Product::find($id);
+
+		if ($product->status == Constant::STATUS_ACTIVE) {
+			$product->status = Constant::STATUS_INACTIVE;
+		} else if ($product->status == Constant::STATUS_INACTIVE) {
+			$product->status = Constant::STATUS_ACTIVE;
+		}
+
+		$product->save();
+
+		return redirect()->back()->with([
+			'Product status has been updated!'
+		]);
 	}
 }

@@ -10,7 +10,7 @@
 @section('content')
 <form action=""  role="form" method="POST" enctype="multipart/form-data">
 	<div class="row">
-		<div class="col-md-6 col-sm-12">
+		<div class="col-md-5 col-sm-12">
 			<div class="card">
 				<div class="card-header">
 					Product Detail
@@ -116,6 +116,33 @@
 				</div>
 			</div>
 		</div>
+		@if (!empty($product->id))
+			<div class="col-md-7 col-sm-12">
+				<div class="card">
+					<div class="card-header">
+						List Varian
+						<a href="{{ route('varian.detail', ['id' => 0, 'productId' => $product->id]) }}" class="btn btn-sm btn-success float-right">Add Varian</a>
+					</div>
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-12">
+								<table id="varian-table" class="table table-bordered table-hover">
+									<thead>
+										<th>ID</th>
+										<th>Size/Desc</th>
+										<th>Qty</th>
+										<th>Price</th>
+										<th>Status</th>
+										<th>Action</th>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		@endif
 	</div>
 </form>
 @stop
@@ -148,6 +175,28 @@
 			    reader.readAsDataURL(input.files[0]);
 			  }
 			}
+
+			$('#varian-table').DataTable({
+				dom: 'Bfrtip',
+				processing: true,
+				serverSide: true,
+				responsive: true,
+				// language: {
+				// 	url: 'https://cdn.datatables.net/plug-ins/1.10.19/i18n/Indonesian.json'
+				// },
+				buttons: [
+		            'csv', 'excel', 'pdf', 'print'
+		        ],
+				ajax: '{{ route('varian.indexData', ['productId' => $product->id]) }}',
+				columns: [
+					{ data: 'id', name: 'id' },
+					{ data: 'size', name: 'size' },
+					{ data: 'quantity', name: 'quantity' },
+					{ data: 'price', name: 'price' },
+					{ data: 'status', name: 'status' },
+					{ data: 'action', name: 'action' },
+				]
+			});
 
 			$("#image").change(function() {
 			  readURL(this);

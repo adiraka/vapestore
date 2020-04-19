@@ -156,6 +156,7 @@
 @section('js')
 	<script>
 		var liquidList = {!! json_encode($constant::LIQUID_TYPE_LIST) !!};
+		var catridgeList = {!! json_encode($constant::CATRIDGE_TYPE_LIST) !!};
 		var deviceList = {!! json_encode($constant::DEVICE_TYPE_LIST) !!};
 		var cottonList = {!! json_encode($constant::COTTON_TYPE_LIST) !!};
 		var coilList = {!! json_encode($constant::COIL_TYPE_LIST) !!};
@@ -254,9 +255,11 @@
 				} else if(category == 'AUTOMIZER') {
 					optionHtml = generateTypeOption(automizerList);
 				} else if(category == 'CATRIDGE') {
-					optionHtml = '<option value="">No Type..</option>';
+					optionHtml = generateTypeOption(catridgeList);
 				} else if(category == 'COIL') {
 					optionHtml = generateTypeOption(coilList);
+				} else if(category == 'DRIP_TIP') {
+					optionHtml = generateTypeOption(dripTipList);
 				}
 			}
 			$('#type-select').empty();

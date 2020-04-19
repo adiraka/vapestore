@@ -22,13 +22,15 @@ class Constant {
     const CATEGORY_AUTOMIZER = 'AUTOMIZER';
     const CATEGORY_CATRIDGE = 'CATRIDGE';
     const CATEGORY_COIL = 'COIL';
+    const CATEGORY_DRIP_TIP = 'DRIP_TIP';
     const CATEGORY_LIST = [
     	self::CATEGORY_LIQUID => 'Liquid',
 	    self::CATEGORY_DEVICE => 'Device',
 	    self::CATEGORY_COTTON => 'Cotton',
 	    self::CATEGORY_AUTOMIZER => 'Automizer',
 	    self::CATEGORY_CATRIDGE => 'Catridge',
-	    self::CATEGORY_COIL => 'Coil'
+	    self::CATEGORY_COIL => 'Coil',
+        self::CATEGORY_DRIP_TIP => 'Drip Tip'
     ];
 
     const LIQUID_TYPE_FREEBASE = 'FREEBASE';
@@ -45,6 +47,11 @@ class Constant {
     	self::DEVICE_TYPE_ELECTRICAL => 'Electrical',
     	self::DEVICE_TYPE_MECHA => 'Mecha',
     	self::DEVICE_TYPE_POD => 'Pod'
+    ];
+
+    const CATRIDGE_TYPE_CATRIDGE = 'CATRIDGE';
+    const CATRIDGE_TYPE_LIST = [
+        self::CATRIDGE_TYPE_CATRIDGE => 'Catridge',
     ];
 
     const COTTON_TYPE_KENDO = 'KENDO';
@@ -79,7 +86,6 @@ class Constant {
     	self::DRIP_TIP_TYPE_510 => '510'
     ];
 
-
     const ALL_TYPE_LABEL = [
     	self::LIQUID_TYPE_FREEBASE => 'Freebase',
     	self::LIQUID_TYPE_SALTNIC => 'SaltNic',
@@ -95,6 +101,17 @@ class Constant {
     	self::AUTOMIZER_TYPE_RDA => 'RDA',
     	self::AUTOMIZER_TYPE_RTA => 'RTA',
     	self::DRIP_TIP_TYPE_810 => '810',
-    	self::DRIP_TIP_TYPE_510 => '510'
+    	self::DRIP_TIP_TYPE_510 => '510',
+        self::CATRIDGE_TYPE_CATRIDGE => 'Catridge'
+    ];
+
+    const CATEGORY_TYPE_LIST = [
+        self::CATEGORY_LIQUID => self::LIQUID_TYPE_LIST,
+        self::CATEGORY_DEVICE => self::DEVICE_TYPE_LIST,
+        self::CATEGORY_COTTON => self::COTTON_TYPE_LIST,
+        self::CATEGORY_AUTOMIZER => self::AUTOMIZER_TYPE_LIST,
+        self::CATEGORY_CATRIDGE => self::CATRIDGE_TYPE_LIST,
+        self::CATEGORY_COIL => self::COIL_TYPE_LIST,
+        self::CATEGORY_DRIP_TIP => self::DRIP_TIP_TYPE_LIST
     ];
 }

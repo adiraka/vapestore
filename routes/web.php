@@ -12,10 +12,16 @@
 */
 
 Route::get('/', function () {
-    return 'Home Page';
+    return redirect()->route('web.homePage');
 });
 
+Route::get('home', 'Web\HomeController@getHomePage')->name('web.homePage');
+
 Route::prefix('admin')->group(function() {
+    Route::get('/', function () {
+        return redirect()->route('admin.getLogin');
+    });
+
     Route::middleware(['guest'])->group(function() {
         Route::get('login', 'Admin\AuthController@getLoginPage')->name('admin.getLogin');
         Route::post('login', 'Admin\AuthController@postLogin')->name('admin.postLogin');

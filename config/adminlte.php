@@ -205,11 +205,6 @@ return [
             'icon' => 'fas fa-fw fa-book',
         ],
         [
-            'text' => 'Purchase',
-            'url'  => 'admin/purchases',
-            'icon' => 'fas fa-fw fa-book',
-        ],
-        [
             'text' => 'Blog',
             'url'  => 'admin/blogs',
             'icon' => 'fas fa-fw fa-book',

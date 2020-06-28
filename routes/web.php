@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Route::get('home', 'Web\HomeController@getHomePage')->name('web.homePage');
 
+Route::get('product/category/{category?}', 'Web\ProductController@getCategoryList')->name('web.category.list');
+
 Route::prefix('admin')->group(function() {
     Route::get('/', function () {
         return redirect()->route('admin.getLogin');

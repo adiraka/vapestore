@@ -23,7 +23,8 @@ class BlogController extends Controller
 		$dataTables = Datatables::of($listData)
 						->addColumn('action', function($blog) {
 							return '
-								<a href="'.route('blog.detail', ['id' => $blog->id]).'" class="btn btn-xs btn-success">Update</a>				
+								<a href="'.route('blog.detail', ['id' => $blog->id]).'" class="btn btn-xs btn-success">Update</a>		
+                                <a href="'.route('blog.changeStatus', ['id' => $blog->id]).'" class="btn btn-xs btn-warning">Change Status</a>    		
     						';
 						})
 						->editColumn('status', function($blog) {
@@ -80,5 +81,27 @@ class BlogController extends Controller
     	$blog->save();
 
     	return redirect()->route('blog.index');
+    }
+
+    public function changeStatus($id = 0) {
+        if (empty($id)) {
+            return redirect()->back()->withErrors([
+                'Blog ID cannnot be NULL!'
+            ]);
+        }
+
+        $blog = Blog::find($id);
+
+        if ($blog->status == Constant::BLOG_STATUS_PUBLISHED) {
+            $blog->status = Constant::BLOG_STATUS_UNPUBLISHED;
+        } else if ($blog->status == Constant::BLOG_STATUS_UNPUBLISHED) {
+            $blog->status = Constant::BLOG_STATUS_PUBLISHED;
+        }
+
+        $blog->save();
+
+        return redirect()->back()->with([
+            'Blog status has been updated!'
+        ]);
     }
 }

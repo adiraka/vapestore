@@ -58,8 +58,8 @@ Route::prefix('admin')->group(function() {
 
         Route::get('blogs', 'Admin\BlogController@index')->name('blog.index');
         Route::get('blogsData', 'Admin\BlogController@indexData')->name('blog.indexData');
+        Route::get('blog/changeStatus/{id?}', 'Admin\BlogController@changeStatus')->name('blog.changeStatus');
         Route::get('blog/{id?}', 'Admin\BlogController@detail')->name('blog.detail');
         Route::post('blog/{id?}', 'Admin\BlogController@save')->name('blog.save');
-        Route::get('blogFind', 'Admin\BlogController@find')->name('blog.find');
     });
 });

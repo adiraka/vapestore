@@ -55,5 +55,11 @@ Route::prefix('admin')->group(function() {
         Route::get('varian/changeStatus/{id?}', 'Admin\VarianController@changeStatus')->name('varian.changeStatus');
         Route::get('varian/{id?}/{productId?}', 'Admin\VarianController@detail')->name('varian.detail');
         Route::post('varian/{id?}/{productId?}', 'Admin\VarianController@save')->name('varian.save');
+
+        Route::get('blogs', 'Admin\BlogController@index')->name('blog.index');
+        Route::get('blogsData', 'Admin\BlogController@indexData')->name('blog.indexData');
+        Route::get('blog/{id?}', 'Admin\BlogController@detail')->name('blog.detail');
+        Route::post('blog/{id?}', 'Admin\BlogController@save')->name('blog.save');
+        Route::get('blogFind', 'Admin\BlogController@find')->name('blog.find');
     });
 });

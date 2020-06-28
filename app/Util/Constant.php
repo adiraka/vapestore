@@ -114,4 +114,11 @@ class Constant {
         self::CATEGORY_COIL => self::COIL_TYPE_LIST,
         self::CATEGORY_DRIP_TIP => self::DRIP_TIP_TYPE_LIST
     ];
+
+    const BLOG_STATUS_PUBLISHED = 'PUBLISHED';
+    const BLOG_STATUS_UNPUBLISHED = 'UNPUBLISHED';
+    const BLOG_STATUS_LIST = [
+        self::BLOG_STATUS_PUBLISHED => 'Published',
+        self::BLOG_STATUS_UNPUBLISHED => 'Unpublished'
+    ];
 }

@@ -68,7 +68,13 @@ class ProductController extends Controller
 	public function getProductDetail($id = '') {
 		if (empty($id)) abort(404);
 
-		dd('masuk');
+		$product = Product::with('varians')->find($id);
+
+		if (empty($product)) abort(404);
+
+		return view('web.product.detail', [
+			'product' => $product
+		]);
 	}
 
 	public function getVarianDetail(Request $request) {

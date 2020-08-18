@@ -45,7 +45,7 @@
   </div>
   <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <a href="index.html" class="navbar-brand home">
+      <a href="{{ route('web.homePage') }}" class="navbar-brand home">
         <img src="{{ asset('web/img/logo.png') }}" alt="Obaju logo" class="d-none d-md-inline-block">
         <img src="{{ asset('web/img/logo-small.png') }}" alt="Obaju logo" class="d-inline-block d-md-none">
         <span class="sr-only">Obaju - go to homepage</span>
@@ -65,7 +65,7 @@
       </div>
       <div id="navigation" class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="{{ route('web.homePage') }}" class="nav-link">Home</a></li>
           <li class="nav-item dropdown menu-large">
             <a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">
               Category <b class="caret"></b>

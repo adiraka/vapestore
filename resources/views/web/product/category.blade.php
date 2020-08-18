@@ -25,13 +25,14 @@
 									<button type="button" class="btn btn-limit-per-page btn-outline-secondary btn-sm" value="10">10</button>
 									<button type="button" class="btn btn-limit-per-page btn-outline-secondary btn-sm" value="30">30</button>
 									<button type="button" class="btn btn-limit-per-page btn-outline-secondary btn-sm" value="50">50</button>
-									<span>products</span></div>
-								<div class="products-sort-by mt-2 mt-lg-0"><strong>Sort by</strong>
+									<span>products</span>
+								</div>
+								{{-- <div class="products-sort-by mt-2 mt-lg-0"><strong>Sort by</strong>
 									<select name="sort-by" class="form-control">
 										<option>Price</option>
 										<option>Name</option>
 									</select>
-								</div>
+								</div> --}}
 							</form>
 						</div>
 					</div>
@@ -79,7 +80,14 @@
 			$.ajax({
 				url: ajaxUrl,
 				method: 'POST',
-				data: {page, limit, category},
+				data: {
+					page, 
+					limit, 
+					category,
+					orderBy: {
+						created_at: "DESC"
+					}
+				},
 				type: 'json',
 				success: function(data) {
 					setProduct(data);

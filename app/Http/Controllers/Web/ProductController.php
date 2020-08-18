@@ -23,16 +23,23 @@ class ProductController extends Controller
 
 	public function getProductList(Request $request) {
 		$data = (object)$request->all();
-		
+
 		$page = isset($data->page) ? $data->page : 1;
 		$limit = isset($data->limit) ? $data->limit : 10;
-		$category = isset($data->category) ? $data->category : '';
-		
-		$products = Product::where('type', $category)
-						->where('status', Constant::STATUS_ACTIVE)
-						->limit($limit)
-						->offset(($page - 1) * $limit)
-						->get();
+
+		$products = Product::where('status', Constant::STATUS_ACTIVE);
+
+		if (isset($data->category)) {
+			$products = $products->where('type', $data->category);
+		}
+
+		if (isset($data->orderBy)) {
+			foreach ($data->orderBy as $column => $order) {
+				$products = $products->orderBy($column, $order);
+			}
+		}
+					
+		$products = $products->limit($limit)->offset(($page - 1) * $limit)->get();
 
 		foreach ($products as $key => $product) {
 			$parsedData = ProductService::SetPriceRange($product);
@@ -56,5 +63,9 @@ class ProductController extends Controller
 			'dataPerPage' => $limit,
 			'totalPage' => $totalPage,
 		]);
+	}
+
+	public function getVarianDetail($id) {
+
 	}
 }

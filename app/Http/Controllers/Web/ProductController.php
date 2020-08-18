@@ -65,7 +65,13 @@ class ProductController extends Controller
 		]);
 	}
 
-	public function getVarianDetail($id) {
+	public function getProductDetail($id = '') {
+		if (empty($id)) abort(404);
+
+		dd('masuk');
+	}
+
+	public function getVarianDetail(Request $request) {
 
 	}
 }

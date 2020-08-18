@@ -19,6 +19,8 @@ Route::get('home', 'Web\HomeController@getHomePage')->name('web.homePage');
 
 Route::get('product/category/{category?}', 'Web\ProductController@getCategoryList')->name('web.category.list');
 Route::post('product/list', 'Web\ProductController@getProductList')->name('web.product.list');
+Route::get('product/detail/{id?}', 'Web\ProductController@getProductDetail')->name('web.product.detail');
+
 
 Route::prefix('admin')->group(function() {
     Route::get('/', function () {

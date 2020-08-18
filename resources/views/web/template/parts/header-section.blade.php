@@ -79,7 +79,7 @@
                       <ul class="list-unstyled mb-3">
                         @if (count($constant::CATEGORY_TYPE_LIST[$categoryCode]) > 0)
                           @foreach ($constant::CATEGORY_TYPE_LIST[$categoryCode] as $typeCode => $type)
-                            <li class="nav-item"><a href="category.html" class="nav-link">{{ $type }}</a></li>
+                            <li class="nav-item"><a href="{{ route('web.category.list', ['category' => $typeCode]) }}" class="nav-link">{{ $type }}</a></li>
                           @endforeach
                         @endif
                       </ul>

@@ -3,248 +3,142 @@
 @section('content')
  
 	<div class="container">
-          <div class="row">                       
+        <div class="row">                       
             <div class="col-lg-12">
-              <!-- breadcrumb-->
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="{{ route('o') }}">Home</a></li>
-                  <li aria-current="page" class="breadcrumb-item active">Ladies</li>
-                </ol>
-              </nav>
-              <div class="box">
-                <h1>Ladies</h1>
-                <p>In our Ladies department we offer wide selection of the best products we have found and carefully selected worldwide.</p>
-              </div>
-              <div class="box info-bar">
-                <div class="row">
-                  <div class="col-md-12 col-lg-4 products-showing">Showing <strong>12</strong> of <strong>25</strong> products</div>
-                  <div class="col-md-12 col-lg-7 products-number-sort">
-                    <form class="form-inline d-block d-lg-flex justify-content-between flex-column flex-md-row">
-                      <div class="products-number"><strong>Show</strong><a href="#" class="btn btn-sm btn-primary">12</a><a href="#" class="btn btn-outline-secondary btn-sm">24</a><a href="#" class="btn btn-outline-secondary btn-sm">All</a><span>products</span></div>
-                      <div class="products-sort-by mt-2 mt-lg-0"><strong>Sort by</strong>
-                        <select name="sort-by" class="form-control">
-                          <option>Price</option>
-                          <option>Name</option>
-                          <option>Sales first</option>
-                        </select>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-              <div class="row products">
-                <div class="col-lg-3 col-md-4">
-                  <div class="product">
-                    <div class="flip-container">
-                      <div class="flipper">
-                        <div class="front"><a href="detail.html"><img src="img/product1.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="detail.html"><img src="img/product1_2.jpg" alt="" class="img-fluid"></a></div>
-                      </div>
-                    </div><a href="detail.html" class="invisible"><img src="img/product1.jpg" alt="" class="img-fluid"></a>
-                    <div class="text">
-                      <h3><a href="detail.html">Fur coat with very but very very long name</a></h3>
-                      <p class="price"> 
-                        <del></del>$143.00
-                      </p>
-                      <p class="buttons"><a href="detail.html" class="btn btn-outline-secondary">View detail</a><a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
-                    </div>
-                    <!-- /.text-->
-                  </div>
-                  <!-- /.product            -->
-                </div>
-                <div class="col-lg-3 col-md-4">
-                  <div class="product">
-                    <div class="flip-container">
-                      <div class="flipper">
-                        <div class="front"><a href="detail.html"><img src="img/product2.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="detail.html"><img src="img/product2_2.jpg" alt="" class="img-fluid"></a></div>
-                      </div>
-                    </div><a href="detail.html" class="invisible"><img src="img/product2.jpg" alt="" class="img-fluid"></a>
-                    <div class="text">
-                      <h3><a href="detail.html">White Blouse Armani</a></h3>
-                      <p class="price"> 
-                        <del>$280</del>$143.00
-                      </p>
-                      <p class="buttons"><a href="detail.html" class="btn btn-outline-secondary">View detail</a><a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
-                    </div>
-                    <!-- /.text-->
-                    <div class="ribbon sale">
-                      <div class="theribbon">SALE</div>
-                      <div class="ribbon-background"></div>
-                    </div>
-                    <!-- /.ribbon-->
-                    <div class="ribbon new">
-                      <div class="theribbon">NEW</div>
-                      <div class="ribbon-background"></div>
-                    </div>
-                    <!-- /.ribbon-->
-                    <div class="ribbon gift">
-                      <div class="theribbon">GIFT</div>
-                      <div class="ribbon-background"></div>
-                    </div>
-                    <!-- /.ribbon-->
-                  </div>
-                  <!-- /.product            -->
-                </div>
-                <div class="col-lg-3 col-md-4">
-                  <div class="product">
-                    <div class="flip-container">
-                      <div class="flipper">
-                        <div class="front"><a href="detail.html"><img src="img/product3.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="detail.html"><img src="img/product3_2.jpg" alt="" class="img-fluid"></a></div>
-                      </div>
-                    </div><a href="detail.html" class="invisible"><img src="img/product3.jpg" alt="" class="img-fluid"></a>
-                    <div class="text">
-                      <h3><a href="detail.html">Black Blouse Versace</a></h3>
-                      <p class="price"> 
-                        <del></del>$143.00
-                      </p>
-                      <p class="buttons"><a href="detail.html" class="btn btn-outline-secondary">View detail</a><a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
-                    </div>
-                    <!-- /.text-->
-                  </div>
-                  <!-- /.product            -->
-                </div>
-                <div class="col-lg-3 col-md-4">
-                  <div class="product">
-                    <div class="flip-container">
-                      <div class="flipper">
-                        <div class="front"><a href="detail.html"><img src="img/product3.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="detail.html"><img src="img/product3_2.jpg" alt="" class="img-fluid"></a></div>
-                      </div>
-                    </div><a href="detail.html" class="invisible"><img src="img/product3.jpg" alt="" class="img-fluid"></a>
-                    <div class="text">
-                      <h3><a href="detail.html">Black Blouse Versace</a></h3>
-                      <p class="price"> 
-                        <del></del>$143.00
-                      </p>
-                      <p class="buttons"><a href="detail.html" class="btn btn-outline-secondary">View detail</a><a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
-                    </div>
-                    <!-- /.text-->
-                  </div>
-                  <!-- /.product            -->
-                </div>
-                <div class="col-lg-3 col-md-4">
-                  <div class="product">
-                    <div class="flip-container">
-                      <div class="flipper">
-                        <div class="front"><a href="detail.html"><img src="img/product2.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="detail.html"><img src="img/product2_2.jpg" alt="" class="img-fluid"></a></div>
-                      </div>
-                    </div><a href="detail.html" class="invisible"><img src="img/product2.jpg" alt="" class="img-fluid"></a>
-                    <div class="text">
-                      <h3><a href="detail.html">White Blouse Versace</a></h3>
-                      <p class="price"> 
-                        <del></del>$143.00
-                      </p>
-                      <p class="buttons"><a href="detail.html" class="btn btn-outline-secondary">View detail</a><a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
-                    </div>
-                    <!-- /.text-->
-                    <div class="ribbon new">
-                      <div class="theribbon">NEW</div>
-                      <div class="ribbon-background"></div>
-                    </div>
-                    <!-- /.ribbon-->
-                  </div>
-                  <!-- /.product            -->
-                </div>
-                <div class="col-lg-3 col-md-4">
-                  <div class="product">
-                    <div class="flip-container">
-                      <div class="flipper">
-                        <div class="front"><a href="detail.html"><img src="img/product1.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="detail.html"><img src="img/product1_2.jpg" alt="" class="img-fluid"></a></div>
-                      </div>
-                    </div><a href="detail.html" class="invisible"><img src="img/product1.jpg" alt="" class="img-fluid"></a>
-                    <div class="text">
-                      <h3><a href="detail.html">Fur coat</a></h3>
-                      <p class="price"> 
-                        <del></del>$143.00
-                      </p>
-                      <p class="buttons"><a href="detail.html" class="btn btn-outline-secondary">View detail</a><a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
-                    </div>
-                    <!-- /.text-->
-                    <div class="ribbon gift">
-                      <div class="theribbon">GIFT</div>
-                      <div class="ribbon-background"></div>
-                    </div>
-                    <!-- /.ribbon-->
-                  </div>
-                  <!-- /.product            -->
-                </div>
-                <div class="col-lg-3 col-md-4">
-                  <div class="product">
-                    <div class="flip-container">
-                      <div class="flipper">
-                        <div class="front"><a href="detail.html"><img src="img/product2.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="detail.html"><img src="img/product2_2.jpg" alt="" class="img-fluid"></a></div>
-                      </div>
-                    </div><a href="detail.html" class="invisible"><img src="img/product2.jpg" alt="" class="img-fluid"></a>
-                    <div class="text">
-                      <h3><a href="detail.html">White Blouse Armani</a></h3>
-                      <p class="price"> 
-                        <del>$280</del>$143.00
-                      </p>
-                      <p class="buttons"><a href="detail.html" class="btn btn-outline-secondary">View detail</a><a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
-                    </div>
-                    <!-- /.text-->
-                    <div class="ribbon sale">
-                      <div class="theribbon">SALE</div>
-                      <div class="ribbon-background"></div>
-                    </div>
-                    <!-- /.ribbon-->
-                    <div class="ribbon new">
-                      <div class="theribbon">NEW</div>
-                      <div class="ribbon-background"></div>
-                    </div>
-                    <!-- /.ribbon-->
-                    <div class="ribbon gift">
-                      <div class="theribbon">GIFT</div>
-                      <div class="ribbon-background"></div>
-                    </div>
-                    <!-- /.ribbon-->
-                  </div>
-                  <!-- /.product            -->
-                </div>
-                <div class="col-lg-3 col-md-4">
-                  <div class="product">
-                    <div class="flip-container">
-                      <div class="flipper">
-                        <div class="front"><a href="detail.html"><img src="img/product3.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="detail.html"><img src="img/product3_2.jpg" alt="" class="img-fluid"></a></div>
-                      </div>
-                    </div><a href="detail.html" class="invisible"><img src="img/product3.jpg" alt="" class="img-fluid"></a>
-                    <div class="text">
-                      <h3><a href="detail.html">Black Blouse Versace</a></h3>
-                      <p class="price"> 
-                        <del></del>$143.00
-                      </p>
-                      <p class="buttons"><a href="detail.html" class="btn btn-outline-secondary">View detail</a><a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>
-                    </div>
-                    <!-- /.text-->
-                  </div>
-                  <!-- /.product            -->
-                </div>
-                <!-- /.products-->
-              </div>
-              <div class="pages">
-                <p class="loadMore"><a href="#" class="btn btn-primary btn-lg"><i class="fa fa-chevron-down"></i> Load more</a></p>
-                <nav aria-label="Page navigation example" class="d-flex justify-content-center">
-                  <ul class="pagination">
-                    <li class="page-item"><a href="#" aria-label="Previous" class="page-link"><span aria-hidden="true">«</span><span class="sr-only">Previous</span></a></li>
-                    <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" aria-label="Next" class="page-link"><span aria-hidden="true">»</span><span class="sr-only">Next</span></a></li>
-                  </ul>
-                </nav>
-              </div>
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="{{ route('web.homePage') }}">Home</a></li>
+						<li aria-current="page" class="breadcrumb-item active">{{ $categoryName }}</li>
+					</ol>
+				</nav>
+				<div class="box">
+					<h1>{{ $categoryName }}</h1>
+					<p>{{ $categoryDescription }}</p>
+				</div>
+				<div class="box info-bar">
+					<div class="row">
+						<div class="col-md-12 col-lg-4 products-showing"></div>
+						<div class="col-md-12 col-lg-7 products-number-sort">
+							<form class="form-inline d-block d-lg-flex justify-content-between flex-column flex-md-row">
+								<div class="products-number">
+									<strong>Show</strong>
+									<button type="button" class="btn btn-limit-per-page btn-outline-secondary btn-sm" value="10">10</button>
+									<button type="button" class="btn btn-limit-per-page btn-outline-secondary btn-sm" value="30">30</button>
+									<button type="button" class="btn btn-limit-per-page btn-outline-secondary btn-sm" value="50">50</button>
+									<span>products</span></div>
+								<div class="products-sort-by mt-2 mt-lg-0"><strong>Sort by</strong>
+									<select name="sort-by" class="form-control">
+										<option>Price</option>
+										<option>Name</option>
+									</select>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+              	<div class="row products">
+                	
+              	</div>
+				<div class="pages">
+					<nav aria-label="Page navigation example" class="d-flex justify-content-center">
+						<ul class="pagination">
+							<li class="page-item"><a href="#" aria-label="Previous" class="page-link"><span aria-hidden="true">«</span><span class="sr-only">Previous</span></a></li>
+							<li class="page-item active"><a href="#" class="page-link">1</a></li>
+							<li class="page-item"><a href="#" class="page-link">2</a></li>
+							<li class="page-item"><a href="#" class="page-link">3</a></li>
+							<li class="page-item"><a href="#" class="page-link">4</a></li>
+							<li class="page-item"><a href="#" class="page-link">5</a></li>
+							<li class="page-item"><a href="#" aria-label="Next" class="page-link"><span aria-hidden="true">»</span><span class="sr-only">Next</span></a></li>
+						</ul>
+					</nav>
+				</div>
             </div>
-            <!-- /.col-lg-9-->
-          </div>
         </div>
+    </div>
  
 @endsection
+
+@push('scripts')
+	<script type="text/javascript">
+		var currentPage = 1;
+		var currentLimit = 10;
+		var category = '{{ $category }}';
+
+		$(function() {
+			getProductList(currentPage, currentLimit);
+
+			$('.btn-limit-per-page').on('click', function() {
+				let limit = $(this).val();
+				currentLimit = limit;
+				getProductList(currentPage, limit);
+			})
+		});
+
+		function getProductList(page, limit) {
+			var ajaxUrl = '{{ route('web.product.list') }}';
+			$.ajax({
+				url: ajaxUrl,
+				method: 'POST',
+				data: {page, limit, category},
+				type: 'json',
+				success: function(data) {
+					setProduct(data);
+				},
+				fail: function() {
+					alert('gagal');
+				}
+			});
+		}
+
+		function setProduct(data) {
+			$('.products').empty();
+			$('.products-showing').empty();
+			$('.pagination').empty();
+
+			let productList = data.data;
+			let html = '';
+			let paginate = '';
+
+			$.each(productList, function(index, value){
+				html += '<div class="col-lg-3 col-md-4">'
+				html += '<div class="product">'
+				html += '<div class="flip-container">'
+				html += '<div class="flipper">'
+				html += '<div class="front"><a href="detail.html"><img src="/upload/'+value.thumbnail+'" alt="" class="img-fluid"></a></div>'
+				html += '<div class="back"><a href="detail.html"><img src="/upload/'+value.thumbnail+'" alt="" class="img-fluid"></a></div>'
+				html += '</div>'
+				html += '</div><a href="detail.html" class="invisible"><img src="/upload/'+value.thumbnail+'" alt="" class="img-fluid"></a>'
+				html += '<div class="text">'
+				html += '<h3><a href="detail.html">'+value.name+'</a></h3>'
+				html += '<p class="price">' 
+				html += '<del></del>'+value.priceRange 
+				html += '</p>'
+				html += '<p class="buttons"><a href="detail.html" class="btn btn-outline-secondary">View detail</a><a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>'
+				html += '</div>'
+				html += '</div>'
+				html += '</div>'
+			});
+
+			paginate += '<li class="page-item"><button type="button" value="'+data.prevPage+'" aria-label="Previous" class="page-link pagination-button"><span aria-hidden="true">«</span><span class="sr-only">Previous</span></button></li>';
+			for (var i = 1; i <= data.totalPage; i++) {
+				if (i == data.page) {
+					paginate += '<li class="page-item active"><button type="button" value="'+i+'" class="page-link pagination-button">'+i+'</button></li>';
+				} else {
+					paginate += '<li class="page-item"><button type="button" value="'+i+'" class="page-link pagination-button">'+i+'</button></li>';
+				}
+			}
+			paginate += '<li class="page-item"><button type="button" value="'+data.nextPage+'" aria-label="Next" class="page-link pagination-button"><span aria-hidden="true">»</span><span class="sr-only">Next</span></button></li>';
+
+			$('.products').append(html);
+			$('.pagination').append(paginate);
+			$('.products-showing').append('Showing <strong>'+data.page+'</strong> of <strong>'+data.totalPage+'</strong> pages');
+
+			$('.pagination-button').on('click', function() {
+				let page = $(this).val();
+				console.log(page)
+				currentPage = page;
+				getProductList(page, currentLimit);
+			})
+		}
+	</script>
+@endpush

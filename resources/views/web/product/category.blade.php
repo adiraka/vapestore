@@ -135,7 +135,6 @@
 
 			$('.pagination-button').on('click', function() {
 				let page = $(this).val();
-				console.log(page)
 				currentPage = page;
 				getProductList(page, currentLimit);
 			})

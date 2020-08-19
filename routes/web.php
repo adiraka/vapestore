@@ -20,6 +20,8 @@ Route::get('home', 'Web\HomeController@getHomePage')->name('web.homePage');
 Route::get('product/category/{category?}', 'Web\ProductController@getCategoryList')->name('web.category.list');
 Route::get('product/detail/{id?}', 'Web\ProductController@getProductDetail')->name('web.product.detail');
 
+Route::get('blog/list', 'Web\blogController@getBlogList')->name('web.blog.list');
+
 // API
 Route::post('product/list', 'Web\ProductController@getProductList')->name('web.product.list');
 Route::post('varian/detail', 'Web\ProductController@getVarianDetail')->name('web.varian.detail');

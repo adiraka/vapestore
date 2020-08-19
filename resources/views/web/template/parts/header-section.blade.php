@@ -89,7 +89,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
+          <li class="nav-item"><a href="{{ route('web.blog.list') }}" class="nav-link">Blog</a></li>
           <li class="nav-item"><a href="#" class="nav-link">About</a></li>
           <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
         </ul>

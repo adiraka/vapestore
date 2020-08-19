@@ -49,6 +49,14 @@
 		                        </div>
 
 		                        <div class="form-group row">
+		                            <label for="name" class="col-md-2 control-label">Synopsis</label>
+
+		                            <div class="col-md-10">
+		                                <textarea name="synopsis" class="form-control">{!! empty(old('synopsis')) ? $blog->synopsis : old('synopsis') !!}</textarea>
+		                            </div>
+		                        </div>
+
+		                        <div class="form-group row">
 		                            <label for="name" class="col-md-2 control-label">Content</label>
 
 		                            <div class="col-md-10">

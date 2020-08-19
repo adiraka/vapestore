@@ -61,6 +61,7 @@ class BlogController extends Controller
 
     	$request->validate([
             'title' => 'required',
+            'synopsis' => 'required',
     		'content' => 'required',
     		'status' => 'required'
         ]);
@@ -75,6 +76,7 @@ class BlogController extends Controller
         }
 
     	$blog->title = $data->title;
+        $blog->synopsis = $data->synopsis;
 	    $blog->content = $data->content;
 	    $blog->status = $data->status;
 

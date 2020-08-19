@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Model\Product;
+use App\Model\Varian;
 use App\Service\ProductService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -68,7 +69,7 @@ class ProductController extends Controller
 	public function getProductDetail($id = '') {
 		if (empty($id)) abort(404);
 
-		$product = Product::with('varians')->find($id);
+		$product = Product::with('varians')->where('status', Constant::STATUS_ACTIVE)->find($id);
 
 		if (empty($product)) abort(404);
 
@@ -78,6 +79,17 @@ class ProductController extends Controller
 	}
 
 	public function getVarianDetail(Request $request) {
+		$data = (object)$request->all();
 
+		$varian = Varian::find($data->varianId);
+
+		$varian->price = number_format($varian->price);
+		$varian->volume = empty($varian->volume) ? '-' : $varian->volume.' ml';
+		$varian->colorName = empty($varian->color) ? '-' : $varian->color->name;
+		$varian->nicotin = empty($varian->nicotin) ? '-' : $varian->nicotin.' ml';
+
+		return response([
+			'data' => $varian
+		]);
 	}
 }

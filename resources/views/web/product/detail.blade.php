@@ -23,32 +23,104 @@
                   <div class="box">
                     <h1 class="text-center">{{ $product->name }}</h1>
                     <p class="goToDescription"><a href="#details" class="scroll-to">Scroll to product details, material &amp; care and sizing</a></p>
-                    <p class="price">$124.00</p>
-                    <p class="text-center buttons"><a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a><a href="basket.html" class="btn btn-outline-primary"><i class="fa fa-heart"></i> Add to wishlist</a></p>
+                    <p class="price">-</p>
+                    <p class="text-center">Stock : <span class="stock">-</span></p>
+                    <div>
+                    	<select name="sort-by" class="form-control varianId">
+							<option value="">-- SELECT VARIAN FIRST --</option>
+							@foreach ($product->varians as $varian)
+								<option value="{{ $varian->id }}">{{ $varian->size }}</option>
+							@endforeach
+						</select>
+                    </div>
+                    <br><br>
+                    <p class="text-center buttons"><a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a></p>
                   </div>
                 </div>
               </div>
               <div id="details" class="box">
-                <p></p>
-                <h4>Product details</h4>
-                <p>White lace top, woven, has a round neck, short sleeves, has knitted lining attached</p>
-                <h4>Material &amp; care</h4>
-                <ul>
-                  <li>Polyester</li>
-                  <li>Machine wash</li>
-                </ul>
-                <h4>Size &amp; Fit</h4>
-                <ul>
-                  <li>Regular fit</li>
-                  <li>The model (height 5'8" and chest 33") is wearing a size S</li>
-                </ul>
-                <blockquote>
-                  <p><em>Define style this season with Armani's new range of trendy tops, crafted with intricate details. Create a chic statement look by teaming this lace number with skinny jeans and pumps.</em></p>
-                </blockquote>
+              	<strong>Description Product :</strong> <hr>
+              	{!! $product->description !!}
               </div>
-              
+              <div class="box">
+              	<strong>Varian Detail :</strong> <br><br>
+              	<div class="varian-detail-content">
+					<table class="table table-bordered">
+						<tr>
+							<td width="25%">Varian/Size</td>
+							<td class="varian-name"></td>
+						</tr>
+						<tr>
+							<td width="25%">Color</td>
+							<td class="varian-color"></td>
+						</tr>
+						<tr>
+							<td width="25%">Volume</td>
+							<td class="varian-volume"></td>
+						</tr>
+						<tr>
+							<td width="25%">Nicotine</td>
+							<td class="varian-nicotin"></td>
+						</tr>
+					</table>
+              	</div>
+              </div>
             </div>
         </div>
     </div>
  
 @endsection
+
+@push('scripts')
+	<script type="text/javascript">
+		var productImage = '{{ $product->thumbnail }}';
+
+		$(function() {
+			$('.varianId').on('change', function() {
+				getVarianDetail($(this).val());
+			})
+		});
+
+		function getVarianDetail(varianId) {
+			var ajaxUrl = '{{ route('web.varian.detail') }}';
+			$.ajax({
+				url: ajaxUrl,
+				method: 'POST',
+				data: { varianId },
+				type: 'json',
+				success: function(data) {
+					setVarianDetail(data);
+				},
+				error: function() {
+					resetVarianDetail()
+				}
+			});
+		}
+
+		function setVarianDetail(data) {
+			let varian = data.data;
+
+			$('.price').html('IDR '+varian.price)
+			$('.stock').html(varian.quantity)
+
+			$('.varian-name').html(varian.size)
+			$('.varian-volume').html(varian.volume)
+			$('.varian-color').html(varian.colorName)
+			$('.varian-nicotin').html(varian.nicotin)
+
+			$('.display-image').attr('src', '/upload/'+varian.image);
+		}
+
+		function resetVarianDetail() {
+			$('.price').html('-')
+			$('.stock').html('-')
+
+			$('.varian-name').html('-')
+			$('.varian-volume').html('-')
+			$('.varian-color').html('-')
+			$('.varian-nicotin').html('-')
+
+			$('.display-image').attr('src', '/upload/'+productImage);
+		}
+	</script>
+@endpush

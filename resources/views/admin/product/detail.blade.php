@@ -94,7 +94,7 @@
 	                            <label for="name" class="col-md-4 control-label">Product Description</label>
 
 	                            <div class="col-md-8">
-	                            	<textarea name="description" class="form-control">{{ $product->description }}</textarea>
+	                            	<textarea name="description" class="form-control" id="summernote">{{ $product->description }}</textarea>
 	                            </div>
 	                        </div>
 
@@ -176,6 +176,10 @@
 			    reader.readAsDataURL(input.files[0]);
 			  }
 			}
+
+			$('#summernote').summernote({
+				height: 200,
+			});
 
 			$('#varian-table').DataTable({
 				dom: 'Bfrtip',

@@ -93,7 +93,7 @@
 					setProduct(data);
 				},
 				fail: function() {
-					alert('gagal');
+					alert('Something was wrong while inquire product list.');
 				}
 			});
 		}

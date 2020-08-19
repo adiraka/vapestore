@@ -18,8 +18,11 @@ Route::get('/', function () {
 Route::get('home', 'Web\HomeController@getHomePage')->name('web.homePage');
 
 Route::get('product/category/{category?}', 'Web\ProductController@getCategoryList')->name('web.category.list');
-Route::post('product/list', 'Web\ProductController@getProductList')->name('web.product.list');
 Route::get('product/detail/{id?}', 'Web\ProductController@getProductDetail')->name('web.product.detail');
+
+// API
+Route::post('product/list', 'Web\ProductController@getProductList')->name('web.product.list');
+Route::post('varian/detail', 'Web\ProductController@getVarianDetail')->name('web.varian.detail');
 
 
 Route::prefix('admin')->group(function() {

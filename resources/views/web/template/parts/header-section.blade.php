@@ -5,10 +5,14 @@
         <div class="col-lg-6 offer mb-3 mb-lg-0"></div>
         <div class="col-lg-6 text-center text-lg-right">
           <ul class="menu list-inline mb-0">
-            <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
-            <li class="list-inline-item"><a href="{{ route('web.registerPage') }}">Register</a></li>
             <li class="list-inline-item"><a href="contact.html">Contact</a></li>
-            <li class="list-inline-item"><a href="#">Recently viewed</a></li>
+            @if (Auth::check())
+              <li class="list-inline-item"><a href="#">My Account</a></li>
+              <li class="list-inline-item"><a href="{{ route('web.logout') }}">Logout</a></li>
+            @else
+              <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
+              <li class="list-inline-item"><a href="{{ route('web.registerPage') }}">Register</a></li>
+            @endif
           </ul>
         </div>
       </div>
@@ -23,15 +27,16 @@
             </button>
           </div>
           <div class="modal-body">
-            <form action="customer-orders.html" method="post">
+            <form action="{{ route('web.login') }}" method="post">
+              {{ csrf_field() }}
               <div class="form-group">
-                <input id="email-modal" type="text" placeholder="Email" class="form-control">
+                <input id="email-modal" type="text" name="email" placeholder="Email" class="form-control">
               </div>
               <div class="form-group">
-                <input id="password-modal" type="password" placeholder="Password" class="form-control">
+                <input id="password-modal" type="password" name="password" placeholder="Password" class="form-control">
               </div>
               <p class="text-center">
-                <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
+                <button class="btn btn-primary" type="submit"><i class="fa fa-sign-in"></i> Log in</button>
               </p>
             </form>
             <p class="text-center text-muted">

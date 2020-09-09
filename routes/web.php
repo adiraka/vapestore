@@ -20,6 +20,9 @@ Route::get('home', 'Web\HomeController@getHomePage')->name('web.homePage');
 Route::get('register', 'Web\AuthController@getRegisterPage')->name('web.registerPage');
 Route::post('register', 'Web\AuthController@postRegister')->name('web.register');
 
+Route::post('login', 'Web\AuthController@postLogin')->name('web.login');
+Route::get('logout', 'Web\AuthController@logout')->name('web.logout');
+
 Route::get('product/category/{category?}', 'Web\ProductController@getCategoryList')->name('web.category.list');
 Route::get('product/detail/{id?}', 'Web\ProductController@getProductDetail')->name('web.product.detail');
 

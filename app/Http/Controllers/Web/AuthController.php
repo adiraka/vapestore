@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Web;
 
-use Auth;
+use Session;
 use App\User;
 use App\Model\UserDetail;
+use App\Util\Constant;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -28,6 +30,7 @@ class AuthController extends Controller
 		$user = User::create([
             'name' => $data->name,
             'email' => $data->email,
+            'role' => Constant::USER_ROLE_CUSTOMER,
             'password' => Hash::make($data->password)
         ]);
 
@@ -39,4 +42,31 @@ class AuthController extends Controller
 
         return redirect()->back()->with('success', 'Register successfully, please login on login form.');
 	}
+
+	public function postLogin(Request $request) {
+		request()->validate([
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+
+            if ($user->role != Constant::USER_ROLE_CUSTOMER) {
+                self::logout();
+            }
+
+            return redirect()->route('web.homePage');
+        }
+
+        return redirect()->back()->withError('Oppes! You have entered invalid credentials.');
+	}
+
+	public function logout() {
+        Session::flush();
+        Auth::logout();
+        return redirect()->route('web.registerPage');
+    }
 }

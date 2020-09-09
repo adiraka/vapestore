@@ -65,14 +65,15 @@
 					<h1>Login</h1>
 					<p class="lead">Already our customer?</p>
 					<hr>
-					<form action="customer-orders.html" method="post">
+					<form action="{{ route('web.login') }}" method="post">
+						{{ csrf_field() }}
 						<div class="form-group">
 							<label for="email">Email</label>
-							<input id="email" type="text" class="form-control">
+							<input id="email" name="email" type="text" class="form-control">
 						</div>
 						<div class="form-group">
 							<label for="password">Password</label>
-							<input id="password" type="password" class="form-control">
+							<input id="password" name="password" type="password" class="form-control">
 						</div>
 						<div class="text-center">
 							<button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>

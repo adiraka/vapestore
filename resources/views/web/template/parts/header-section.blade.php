@@ -41,7 +41,7 @@
             </form>
             <p class="text-center text-muted">
               Not registered yet? 
-              <a href="register.html"><strong>Register now</strong></a>!
+              <a href="{{ route('web.registerPage') }}"><strong>Register now</strong></a>!
             </p>
           </div>
         </div>

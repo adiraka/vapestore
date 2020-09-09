@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Route::get('home', 'Web\HomeController@getHomePage')->name('web.homePage');
 
+Route::get('register', 'Web\AuthController@getRegisterPage')->name('web.registerPage');
+
 Route::get('product/category/{category?}', 'Web\ProductController@getCategoryList')->name('web.category.list');
 Route::get('product/detail/{id?}', 'Web\ProductController@getProductDetail')->name('web.product.detail');
 

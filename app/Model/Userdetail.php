@@ -9,6 +9,8 @@ class UserDetail extends Model
 {
     protected $table = 'user_detail';
 
+    protected $fillable = ['name'];
+
     public function user() {
     	return $this->belongsTo(User::class, 'user_id');
     }

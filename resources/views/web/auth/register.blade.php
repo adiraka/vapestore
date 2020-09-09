@@ -1,7 +1,10 @@
 @extends('web.template.layout')
  
 @section('content')
- 
+ 	
+ 	@php
+ 		// dd(Session::all());
+ 	@endphp
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
@@ -12,28 +15,44 @@
 					</ol>
 				</nav>
 			</div>
+			<div class="col-lg-12">
+				@if ($errors->any())
+				    <div class="alert alert-danger">
+				        <ul>
+				            @foreach ($errors->all() as $error)
+				                <li>{{ $error }}</li>
+				            @endforeach
+				        </ul>
+				    </div>
+				@elseif(Session::has('success'))
+					<div class="alert alert-success">
+				        {{ Session::get('success') }}
+				    </div>
+				@endif
+			</div>
 			<div class="col-lg-6">
 				<div class="box">
 					<h1>New account</h1>
 					<p class="lead">Not our registered customer yet?</p>
 					<hr>
-					<form action="customer-orders.html" method="post">
+					<form action="{{ route('web.register') }}" method="post">
+						{{ csrf_field() }}
 						<div class="form-group">
 							<label for="name">Name</label>
-							<input id="name" type="text" class="form-control">
+							<input id="name" name="name" type="text" class="form-control">
 						</div>
 						<div class="form-group">
 							<label for="email">Email</label>
-							<input id="email" type="text" class="form-control">
+							<input id="email" name="email" type="text" class="form-control">
 						</div>
 						<div class="form-group">
 							<label for="password">Password</label>
-							<input id="password" type="password" class="form-control">
+							<input id="password" name="password" type="password" class="form-control">
 						</div>
 
 						<div class="form-group">
-							<label for="passwordConfirmation">Password Confirmation</label>
-							<input id="passwordConfirmation" type="passwordConfirmation" class="form-control">
+							<label for="password_confirmation ">Password Confirmation</label>
+							<input id="password_confirmation " name="password_confirmation" type="password" class="form-control">
 						</div>
 						<div class="text-center">
 							<button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i> Register</button>

@@ -51,7 +51,7 @@
   <nav class="navbar navbar-expand-lg">
     <div class="container">
       <a href="{{ route('web.homePage') }}" class="navbar-brand home">
-        <img src="{{ asset('web/img/logo.png') }}" alt="Obaju logo" class="d-none d-md-inline-block">
+        <img src="{{ asset('image/logo.png') }}" alt="Obaju logo" class="d-none d-md-inline-block">
         <img src="{{ asset('web/img/logo-small.png') }}" alt="Obaju logo" class="d-inline-block d-md-none">
         <span class="sr-only">Obaju - go to homepage</span>
       </a>

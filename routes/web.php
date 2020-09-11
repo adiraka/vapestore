@@ -31,6 +31,7 @@ Route::get('blog/list', 'Web\BlogController@getBlogList')->name('web.blog.list')
 Route::get('blog/detail/{id}', 'Web\BlogController@getBlogDetail')->name('web.blog.detail');
 
 Route::get('account/detail', 'Web\AccountController@getAccountDetail')->name('web.account.detail');
+Route::post('account/detail', 'Web\AccountController@postAccountDetail')->name('web.account.postDetail');
 
 // API
 Route::post('product/list', 'Web\ProductController@getProductList')->name('web.product.list');

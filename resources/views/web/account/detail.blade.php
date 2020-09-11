@@ -81,77 +81,101 @@
                   	</div>
                 </form>
                 <h3 class="mt-5">Personal details</h3>
-                <form>
+                <form method="POST" action="{{ route('web.account.postDetail') }}">
+                	{{ csrf_field() }}
+                	<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="email">Email</label>
+								<input id="email"  name="email" type="text" class="form-control" value="{{ $account->user->email }}" disabled>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="name">Full Name</label>
+								<input id="name"  name="name" type="text" class="form-control" value="{{ $account->name }}">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="gender">Gender</label>
+								<select class="form-control" name="gender">
+									<option value=""></option>
+									@foreach (\App\Util\Constant::GENDER_LABEL as $key => $gender)
+										<option value="{{ $key }}" @if ($account->gender == $key) selected @endif>{{ $gender }}</option>
+									@endforeach
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="dateOfBirth">Date Of Birth</label>
+								<input id="dateOfBirth" name="dateOfBirth" type="text" class="form-control" value="{{ $account->dateOfBirth }}" placeholder="YYYY-MM-DD">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="phone">Phone</label>
+								<input id="phone" name="phone" type="text" class="form-control" value="{{ $account->phone }}">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="address">Address</label>
+								<textarea class="form-control" name="address">{!! $account->address !!}</textarea>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="subdistrict">Village</label>
+								<input id="subdistrict" name="subdistrict" type="text" class="form-control" value="{{ $account->subdistrict }}">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="district">Subdistrict</label>
+								<input id="district" name="district" type="text" class="form-control" value="{{ $account->district }}">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="city">City</label>
+								<input id="city" name="city" type="text" class="form-control" value="{{ $account->city }}">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="province">Province</label>
+								<input id="province" name="province" type="text" class="form-control" value="{{ $account->province }}">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="postalCode">Postal Code</label>
+								<input id="postalCode" name="postalCode" type="text" class="form-control" value="{{ $account->postalCode }}">
+							</div>
+						</div>
+					</div>
                   <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="firstname">Firstname</label>
-                        <input id="firstname" type="text" class="form-control">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="lastname">Lastname</label>
-                        <input id="lastname" type="text" class="form-control">
-                      </div>
-                    </div>
-                  </div>
-                  <!-- /.row-->
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="company">Company</label>
-                        <input id="company" type="text" class="form-control">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="street">Street</label>
-                        <input id="street" type="text" class="form-control">
-                      </div>
-                    </div>
-                  </div>
-                  <!-- /.row-->
-                  <div class="row">
-                    <div class="col-md-6 col-lg-3">
-                      <div class="form-group">
-                        <label for="city">Company</label>
-                        <input id="city" type="text" class="form-control">
-                      </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                      <div class="form-group">
-                        <label for="zip">ZIP</label>
-                        <input id="zip" type="text" class="form-control">
-                      </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                      <div class="form-group">
-                        <label for="state">State</label>
-                        <select id="state" class="form-control"></select>
-                      </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                      <div class="form-group">
-                        <label for="country">Country</label>
-                        <select id="country" class="form-control"></select>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="phone">Telephone</label>
-                        <input id="phone" type="text" class="form-control">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="email">Email</label>
-                        <input id="email" type="text" class="form-control">
-                      </div>
-                    </div>
-                    <div class="col-md-12 text-center">
-                      <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save changes</button>
-                    </div>
+                    	<div class="col-md-12 text-center">
+                      		<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save changes</button>
+                    	</div>
                   </div>
                 </form>
               </div>

@@ -140,4 +140,11 @@ class Constant {
         self::BLOG_STATUS_PUBLISHED => 'Published',
         self::BLOG_STATUS_UNPUBLISHED => 'Unpublished'
     ];
+
+    const GENDER_MALE = 'MALE';
+    const GENDER_FEMALE = 'FEMALE';
+    const GENDER_LABEL = [
+        self::GENDER_MALE => 'Male',
+        self::GENDER_FEMALE => 'Female'
+    ];
 }

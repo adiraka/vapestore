@@ -64,6 +64,31 @@ class AuthController extends Controller
         return redirect()->back()->withError('Oppes! You have entered invalid credentials.');
 	}
 
+    public function postChangePassword(Request $request) {
+        $data = (object)$request->all();
+
+        $request->validate([
+            'password_old' => 'required',
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required'
+        ]);
+
+        $user = Auth::user();
+
+        if (empty($user)) abort('404');
+
+        $checkPassword = Hash::check($data->password_old, $user->password);
+
+        if (!$checkPassword) {
+            return redirect()->back()->withError('Oppes! You have entered invalid Old Password.');
+        }
+
+        $user->password = Hash::make($data->password);
+        $user->save();
+
+        return redirect()->back()->with('success', 'Successfully change password.');
+    }
+
 	public function logout() {
         Session::flush();
         Auth::logout();

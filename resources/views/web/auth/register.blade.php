@@ -2,9 +2,6 @@
  
 @section('content')
  	
- 	@php
- 		// dd(Session::all());
- 	@endphp
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
@@ -15,21 +12,23 @@
 					</ol>
 				</nav>
 			</div>
-			<div class="col-lg-12">
-				@if ($errors->any())
-				    <div class="alert alert-danger">
-				        <ul>
-				            @foreach ($errors->all() as $error)
-				                <li>{{ $error }}</li>
-				            @endforeach
-				        </ul>
-				    </div>
-				@elseif(Session::has('success'))
-					<div class="alert alert-success">
-				        {{ Session::get('success') }}
-				    </div>
-				@endif
-			</div>
+			@if ($errors->any())
+			    <div class="alert alert-danger">
+			        <ul>
+			            @foreach ($errors->all() as $error)
+			                <li>{{ $error }}</li>
+			            @endforeach
+			        </ul>
+			    </div>
+			@elseif(Session::has('success'))
+				<div class="alert alert-success">
+			        {{ Session::get('success') }}
+			    </div>
+			@elseif(Session::has('error'))
+				<div class="alert alert-danger">
+			        {{ Session::get('error') }}
+			    </div>
+			@endif
 			<div class="col-lg-6">
 				<div class="box">
 					<h1>New account</h1>

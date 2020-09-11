@@ -7,7 +7,7 @@
           <ul class="menu list-inline mb-0">
             <li class="list-inline-item"><a href="contact.html">Contact</a></li>
             @if (Auth::check())
-              <li class="list-inline-item"><a href="#">My Account</a></li>
+              <li class="list-inline-item"><a href="{{ route('web.account.detail') }}">My Account</a></li>
               <li class="list-inline-item"><a href="{{ route('web.logout') }}">Logout</a></li>
             @else
               <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>

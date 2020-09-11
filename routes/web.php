@@ -19,6 +19,7 @@ Route::get('home', 'Web\HomeController@getHomePage')->name('web.homePage');
 
 Route::get('register', 'Web\AuthController@getRegisterPage')->name('web.registerPage');
 Route::post('register', 'Web\AuthController@postRegister')->name('web.register');
+Route::post('change-password', 'Web\AuthController@postChangePassword')->name('web.changePassword');
 
 Route::post('login', 'Web\AuthController@postLogin')->name('web.login');
 Route::get('logout', 'Web\AuthController@logout')->name('web.logout');
@@ -28,6 +29,8 @@ Route::get('product/detail/{id?}', 'Web\ProductController@getProductDetail')->na
 
 Route::get('blog/list', 'Web\BlogController@getBlogList')->name('web.blog.list');
 Route::get('blog/detail/{id}', 'Web\BlogController@getBlogDetail')->name('web.blog.detail');
+
+Route::get('account/detail', 'Web\AccountController@getAccountDetail')->name('web.account.detail');
 
 // API
 Route::post('product/list', 'Web\ProductController@getProductList')->name('web.product.list');

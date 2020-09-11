@@ -26,7 +26,8 @@ Route::get('logout', 'Web\AuthController@logout')->name('web.logout');
 Route::get('product/category/{category?}', 'Web\ProductController@getCategoryList')->name('web.category.list');
 Route::get('product/detail/{id?}', 'Web\ProductController@getProductDetail')->name('web.product.detail');
 
-Route::get('blog/list', 'Web\blogController@getBlogList')->name('web.blog.list');
+Route::get('blog/list', 'Web\BlogController@getBlogList')->name('web.blog.list');
+Route::get('blog/detail/{id}', 'Web\BlogController@getBlogDetail')->name('web.blog.detail');
 
 // API
 Route::post('product/list', 'Web\ProductController@getProductList')->name('web.product.list');

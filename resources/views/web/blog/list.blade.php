@@ -22,20 +22,20 @@
 
 				@foreach ($blogs as $blog)
 					<div class="post">
-						<h2><a href="post.html">{{ $blog->title }}</a></h2>
+						<h2><a href="{{ route('web.blog.detail', ['id' => $blog->id]) }}">{{ $blog->title }}</a></h2>
 						<p class="author-category">
 							By Admin
 						</p>
 						<hr>
 						<p class="date-comments">
-							<a href="post.html"><i class="fa fa-calendar-o"></i> {{ \Carbon\Carbon::parse($blog->createdAt)->format('d M Y') }}</a>
-							{{-- <a href="post.html"><i class="fa fa-comment-o"></i> 8 Comments</a> --}}
+							<a href="{{ route('web.blog.detail', ['id' => $blog->id]) }}"><i class="fa fa-calendar-o"></i> {{ \Carbon\Carbon::parse($blog->createdAt)->format('d M Y') }}</a>
+							{{-- <a href="{{ route('web.blog.detail', ['id' => $blog->id]) }}"><i class="fa fa-comment-o"></i> 8 Comments</a> --}}
 						</p>
 						<div class="image">
-							<a href="post.html"><img src="{{ asset('upload/'.$blog->thumbnail) }}" alt="Example blog post alt" class="img-fluid"></a>
+							<a href="{{ route('web.blog.detail', ['id' => $blog->id]) }}"><img src="{{ asset('upload/'.$blog->thumbnail) }}" alt="Example blog post alt" class="img-fluid"></a>
 						</div>
 						<p class="intro">{!! $blog->synopsis !!}</p>
-						<p class="read-more"><a href="post.html" class="btn btn-primary">Continue reading</a></p>
+						<p class="read-more"><a href="{{ route('web.blog.detail', ['id' => $blog->id]) }}" class="btn btn-primary">Continue reading</a></p>
 					</div>
 				@endforeach
 

@@ -15,4 +15,14 @@ class BlogController extends Controller
 			'blogs' => $blogs
 		]);
 	}
+
+	public function getBlogDetail($id) {
+		$blog = Blog::find($id);
+
+		if (empty($blog)) abort('404');
+
+		return view('web.blog.detail', [
+			'blog' => $blog
+		]);
+	}
 }

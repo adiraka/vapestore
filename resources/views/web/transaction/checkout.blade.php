@@ -65,6 +65,36 @@
                             <p><strong>{{ Auth::user()->detail->name }}</strong></p>
                             <p>{{ Auth::user()->detail->address }}</p>
                             <p>{{ 'Kel. '.Auth::user()->detail->subdistrict.' - Kec. '.Auth::user()->detail->district }}</p>
+                            <p>
+                                {{ \App\Service\RajaOngkirService::GetCityName(Auth::user()->detail->city) }}
+                                -
+                                {{ \App\Service\RajaOngkirService::GetProvinceName(Auth::user()->detail->province) }}
+                            </p>
+                            <p>{{ Auth::user()->detail->postalCode }}</p>
+                            <a href="{{ route('web.account.detail') }}">Edit Address</a>
+                        </div>
+                        <hr>
+                        <h3>Delivery</h3>
+                        <br>
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <select name="courier" id="courier" class="form-control">
+                                        <option value=""></option>
+                                        @foreach (\App\Util\Constant::COURIER_LABEL as $key => $data)
+                                            <option value="{{ $key }}">{{ $data }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1">IDR</span>
+                                        </div>
+                                        <input type="text" name="cost" id="cost" class="form-control" value="" readonly>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="box-footer d-flex justify-content-between">
                             <a href="{{ route('web.cart.list') }}" class="btn btn-outline-secondary">

@@ -15,7 +15,8 @@ class CartController extends Controller
 		$cartList = Cart::content();
 
 		return view('web.transaction.cart', [
-			'cartList' => $cartList
+			'cartList' => $cartList,
+			'cart' => Cart::class
 		]); 
 	}
 
@@ -41,7 +42,29 @@ class CartController extends Controller
 	}
 
 	public function postUpdateCart(Request $request) {
-		
+		$data = (object)$request->all();
+
+		$row = count($request->rowId);
+		$errors = [];
+
+		if ($row == 0) {
+			return rediract()->back()->withError('Cart is empty.');
+		}
+
+		for ($i=0; $i < $row; $i++) { 
+			$checkStock = ProductService::CheckQty($request->varianId[$i], $request->qty[$i]);
+			if (!$checkStock) {
+				$errors[] = 'Produk '.$request->productName[$i].' qty insuficient.';
+				continue;
+			}
+			Cart::update($request->rowId[$i], $request->qty[$i]);
+		}
+
+		if (count($errors) > 0) {
+			return rediract()->back()->withError($errros);
+		}
+
+		return redirect()->back()->with('success', 'Successfully update cart.');
 	}
 
 	public function postremoveCart(Request $request) {

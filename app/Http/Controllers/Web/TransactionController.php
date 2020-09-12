@@ -13,10 +13,15 @@ use Illuminate\Http\Request;
 class TransactionController extends Controller
 {
 	public function checkout() {
+		if (!Auth::check()) {
+			return redirect()->route('web.register');
+		}
+
 		$cartList = Cart::content();
 
 		return view('web.transaction.checkout', [
-			'cartList' => $cartList
+			'cartList' => $cartList,
+			'cart' => Cart::class
 		]);
 	}
 

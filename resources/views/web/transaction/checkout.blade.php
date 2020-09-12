@@ -17,38 +17,54 @@
 			<div id="checkout" class="col-lg-12">
                 <div class="box">
                     <form method="post" action="checkout4.html">
-                        <h1>Checkout - Order review</h1>
-                        <br><br>
+                        <h3>Checkout</h3>
+                        <hr>
+                        <h3>Order review</h3>
+                        <br>
                         <div class="content">
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
                                         <tr>
                                             <th colspan="2">Product</th>
+                                            <th>Varian</th>
                                             <th>Quantity</th>
                                             <th>Unit price</th>
-                                            <th>Discount</th>
                                             <th>Total</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td><a href="#"><img src="img/detailsquare.jpg" alt="White Blouse Armani"></a></td>
-                                            <td><a href="#">White Blouse Armani</a></td>
-                                            <td>2</td>
-                                            <td>$123.00</td>
-                                            <td>$0.00</td>
-                                            <td>$246.00</td>
-                                        </tr>
+                                        @foreach ($cartList as $product)
+                                            <tr>
+                                                <td>
+                                                    <a href="{{ route('web.product.detail', ['id' => $product->options['product']['id']]) }}"><img src="{{ asset('upload/'. $product->options->image) }}" alt="White Blouse Armani"></a>
+                                                </td>
+                                                <td><a href="{{ route('web.product.detail', ['id' => $product->options['product']['id']]) }}">{{ $product->name }}</a></td>
+                                                <td>{{ $product->options->size }}</td>
+                                                <td>
+                                                    {{ $product->qty }}
+                                                </td>
+                                                <td>{{ number_format($product->price) }}</td>
+                                                <td>{{ number_format($product->price * $product->qty) }}</td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                     <tfoot>
                                         <tr>
                                             <th colspan="5">Total</th>
-                                            <th>$446.00</th>
+                                            <th>IDR {{ $cart::subtotal() }}</th>
                                         </tr>
                                     </tfoot>
                                 </table>
                             </div>
+                        </div>
+                        <hr>
+                        <h3>Address</h3>
+                        <br>
+                        <div class="content">
+                            <p><strong>{{ Auth::user()->detail->name }}</strong></p>
+                            <p>{{ Auth::user()->detail->address }}</p>
+                            <p>{{ 'Kel. '.Auth::user()->detail->subdistrict.' - Kec. '.Auth::user()->detail->district }}</p>
                         </div>
                         <div class="box-footer d-flex justify-content-between">
                             <a href="{{ route('web.cart.list') }}" class="btn btn-outline-secondary">

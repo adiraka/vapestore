@@ -20,7 +20,7 @@ class TransactionController extends Controller
 		]);
 	}
 
-	public function payment() {
+	public function payment(Request $request) {
 		$params = array(
 		    'transaction_details' => array(
 		        'order_id' => rand(),

@@ -165,6 +165,7 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         Firmantr3\Midtrans\Providers\MidtransServiceProvider::class,
+        Kavist\RajaOngkir\Providers\LaravelServiceProvider,
 
         /*
          * Package Service Providers...
@@ -232,6 +233,7 @@ return [
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'Midtrans' => Firmantr3\Midtrans\Facade\Midtrans::class,
+        'RajaOngkir' => Kavist\RajaOngkir\Facades\RajaOngkir::class,
 
     ],
 

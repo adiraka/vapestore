@@ -13,6 +13,7 @@
         "fideloper/proxy": "^4.0",
         "firmantr3/laravel-midtrans": "^1.0",
         "jeroennoten/laravel-adminlte": "^3.0",
+        "kavist/rajaongkir": "1.1",
         "laravel/framework": "^6.2",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^1.2",

@@ -67,8 +67,10 @@ class CartController extends Controller
 		return redirect()->back()->with('success', 'Successfully update cart.');
 	}
 
-	public function postremoveCart(Request $request) {
-		
+	public function removeCart($id) {
+		Cart::remove($id);
+
+		return redirect()->back()->with('success', 'Successfully update cart.');
 	}
 
 	public function destroyCart() {

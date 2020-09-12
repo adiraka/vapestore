@@ -30,7 +30,7 @@ Route::get('product/detail/{id?}', 'Web\ProductController@getProductDetail')->na
 Route::get('cart/list', 'Web\CartController@getCartList')->name('web.cart.list');
 Route::post('cart/add', 'Web\CartController@postAddCart')->name('web.cart.add');
 Route::post('cart/update', 'Web\CartController@postUpdateCart')->name('web.cart.update');
-Route::post('cart/remove', 'Web\CartController@postremoveCart')->name('web.cart.remove');
+Route::get('cart/remove/{id}', 'Web\CartController@removeCart')->name('web.cart.remove');
 Route::get('cart/destroy', 'Web\CartController@destroyCart')->name('web.cart.destroy');
 
 Route::get('blog/list', 'Web\BlogController@getBlogList')->name('web.blog.list');

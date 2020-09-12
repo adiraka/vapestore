@@ -47,7 +47,7 @@
                                         </td>
                                         <td>{{ number_format($product->price) }}</td>
                                         <td>{{ number_format($product->price * $product->qty) }}</td>
-                                        <td><a href="#"><i class="fa fa-trash-o"></i></a></td>
+                                        <td><a href="{{ route('web.cart.remove', ['id' => $product->rowId]) }}"><i class="fa fa-trash-o"></i></a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

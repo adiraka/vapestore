@@ -70,6 +70,18 @@
 	                            </div>
 	                        </div>
 	                        <div class="form-group row">
+	                            <label for="weight" class="col-md-4 control-label">Weight</label>
+
+	                            <div class="col-md-8">
+	                            	<div class="input-group">
+	                            		<input id="weight" type="number" step="0.01" min="0" class="form-control" name="weight" value="{{ $varian->weight }}">
+	                            		<div class="input-group-append">
+											<span class="input-group-text" id="basic-addon2">gram</span>
+										</div>
+	                            	</div>
+	                            </div>
+	                        </div>
+	                        <div class="form-group row">
 	                            <label for="nicotin" class="col-md-4 control-label">Nicotin</label>
 
 	                            <div class="col-md-8">

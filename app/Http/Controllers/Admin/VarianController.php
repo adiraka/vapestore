@@ -69,6 +69,7 @@ class VarianController extends Controller
     	$varian->color_id = @$data->color_id;
     	$varian->size = $data->size;
     	$varian->volume = @$data->volume;
+    	$varian->weight = @$data->weight;
     	$varian->nicotin = @$data->nicotin;
     	$varian->quantity = @$data->quantity;
     	$varian->price = $data->price;

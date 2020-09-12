@@ -27,6 +27,11 @@ Route::get('logout', 'Web\AuthController@logout')->name('web.logout');
 Route::get('product/category/{category?}', 'Web\ProductController@getCategoryList')->name('web.category.list');
 Route::get('product/detail/{id?}', 'Web\ProductController@getProductDetail')->name('web.product.detail');
 
+Route::get('cart/list', 'Web\CartController@getCartList')->name('web.cart.list');
+Route::post('cart/add', 'Web\CartController@postAddCart')->name('web.cart.add');
+Route::post('cart/update', 'Web\CartController@postUpdateCart')->name('web.cart.update');
+Route::post('cart/remove', 'Web\CartController@postremoveCart')->name('web.cart.remove');
+
 Route::get('blog/list', 'Web\BlogController@getBlogList')->name('web.blog.list');
 Route::get('blog/detail/{id}', 'Web\BlogController@getBlogDetail')->name('web.blog.detail');
 

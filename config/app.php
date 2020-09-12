@@ -165,7 +165,7 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         Firmantr3\Midtrans\Providers\MidtransServiceProvider::class,
-        Kavist\RajaOngkir\Providers\LaravelServiceProvider,
+        // Kavist\RajaOngkir\Providers\LaravelServiceProvider,
 
         /*
          * Package Service Providers...

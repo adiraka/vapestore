@@ -36,6 +36,9 @@ Route::get('cart/destroy', 'Web\CartController@destroyCart')->name('web.cart.des
 Route::get('checkout', 'Web\TransactionController@checkout')->name('web.checkout');
 Route::get('payment', 'Web\TransactionController@payment')->name('web.payment');
 
+Route::get('provinces', 'Web\RajaOngkirController@getAllProvinces')->name('web.provinces');
+Route::get('cities/{province_id?}', 'Web\RajaOngkirController@getCities')->name('web.cities');
+
 Route::get('blog/list', 'Web\BlogController@getBlogList')->name('web.blog.list');
 Route::get('blog/detail/{id}', 'Web\BlogController@getBlogDetail')->name('web.blog.detail');
 

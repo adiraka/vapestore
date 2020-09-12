@@ -147,4 +147,13 @@ class Constant {
         self::GENDER_MALE => 'Male',
         self::GENDER_FEMALE => 'Female'
     ];
+
+    const COURIER_JNE = 'jne';
+    const COURIER_TIKI = 'tiki';
+    const COURIER_POS = 'pos';
+    const COURIER_LABEL = [
+        self::COURIER_JNE => 'JNE',
+        self::COURIER_TIKI => 'TIKI',
+        self::COURIER_POS => 'POS'
+    ];
 }

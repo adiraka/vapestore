@@ -139,28 +139,30 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="subdistrict">Village</label>
-								<input id="subdistrict" name="subdistrict" type="text" class="form-control" value="{{ $account->subdistrict }}">
+								<label for="province">Province</label>
+								<select class="form-control" id="province" name="province"></select>
+								{{-- <input id="province" name="province" type="text" class="form-control" value="{{ $account->province }}"> --}}
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="district">Subdistrict</label>
-								<input id="district" name="district" type="text" class="form-control" value="{{ $account->district }}">
+								<label for="city">City</label>
+								<select class="form-control" id="city" name="city"></select>
+								{{-- <input id="city" name="city" type="text" class="form-control" value="{{ $account->city }}"> --}}
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="city">City</label>
-								<input id="city" name="city" type="text" class="form-control" value="{{ $account->city }}">
+								<label for="district">Subdistrict</label>
+								<input id="district" name="district" type="text" class="form-control" value="{{ $account->district }}">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="province">Province</label>
-								<input id="province" name="province" type="text" class="form-control" value="{{ $account->province }}">
+								<label for="subdistrict">Village</label>
+								<input id="subdistrict" name="subdistrict" type="text" class="form-control" value="{{ $account->subdistrict }}">
 							</div>
 						</div>
 					</div>
@@ -184,3 +186,82 @@
 	</div>
  
 @endsection
+
+@push('scripts')
+	<script>
+		$(function() {
+			initProvince();
+
+			$('#province').on('change', function() {
+				let province_id = $(this).val();
+				initCity(province_id);
+			})
+
+			function initCity(province_id) {
+				let ajaxUrl = '{{ route('web.cities', ['province_id' => '']) }}'+'/'+province_id;
+
+				$.ajax({
+					url: ajaxUrl,
+					method: 'GET',
+					type: 'json',
+					success: function(data) {
+						setCityList(data);
+					},
+					error: function() {
+						alert('Something was wrong while inquiry city data.');
+					}
+				});
+			}
+
+			function initProvince() {
+				let ajaxUrl = '{{ route('web.provinces') }}';
+
+				$.ajax({
+					url: ajaxUrl,
+					method: 'GET',
+					type: 'json',
+					success: function(data) {
+						setProvinceList(data);
+					},
+					error: function() {
+						alert('Something was wrong while inquiry province data.');
+					}
+				});
+			}
+
+			function setProvinceList(data) {
+				let html = '<option value=""></option>';
+				data.forEach(function(province) {
+					html += '<option value="'+province.province_id+'">'+province.province+'</option>';
+				});
+
+				$('#province').append(html);
+
+				selectProvince();
+			}
+
+			function selectProvince() {
+				let province_id = '{{ $account->province }}';
+				$('#province').val(province_id);
+				initCity(province_id);
+			}
+
+			function setCityList(data) {
+				$('#city').empty();
+				let html = '';
+				data.forEach(function(city) {
+					html += '<option value="'+city.city_id+'">'+city.type+' '+city.city_name+'</option>';
+				});
+
+				$('#city').append(html);
+
+				selectCity();
+			}
+
+			function selectCity() {
+				let city_id = '{{ $account->city }}';
+				$('#city').val(city_id);
+			}
+		});	
+	</script>
+@endpush

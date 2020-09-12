@@ -67,7 +67,7 @@
                             <button type="submit" class="btn btn-outline-secondary">
                                 <i class="fa fa-refresh"></i> Update cart
                             </button>
-                            <a href="#" class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i></a>
+                            <a href="{{ route('web.checkout') }}" class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i></a>
                         </div>
                     </div>
                 </form>

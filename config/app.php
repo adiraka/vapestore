@@ -164,6 +164,7 @@ return [
         JeroenNoten\LaravelAdminLte\AdminLteServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        Firmantr3\Midtrans\Providers\MidtransServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -230,6 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'Midtrans' => Firmantr3\Midtrans\Facade\Midtrans::class,
 
     ],
 

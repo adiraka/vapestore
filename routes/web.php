@@ -33,6 +33,9 @@ Route::post('cart/update', 'Web\CartController@postUpdateCart')->name('web.cart.
 Route::get('cart/remove/{id}', 'Web\CartController@removeCart')->name('web.cart.remove');
 Route::get('cart/destroy', 'Web\CartController@destroyCart')->name('web.cart.destroy');
 
+Route::get('checkout', 'Web\TransactionController@checkout')->name('web.checkout');
+Route::get('payment', 'Web\TransactionController@payment')->name('web.payment');
+
 Route::get('blog/list', 'Web\BlogController@getBlogList')->name('web.blog.list');
 Route::get('blog/detail/{id}', 'Web\BlogController@getBlogDetail')->name('web.blog.detail');
 

@@ -34,7 +34,11 @@
 						</select>
                     </div>
                     <br><br>
-                    <p class="text-center buttons"><a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a></p>
+                    <p class="text-center buttons">
+                    	<a id="btn-add-tocart" data-toggle="modal" data-target="#add-tocart-modal" class="btn btn-primary disabled">
+                    		<i class="fa fa-shopping-cart"></i> Add to cart
+                    	</a>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -68,6 +72,31 @@
             </div>
         </div>
     </div>
+
+    <div id="add-tocart-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" class="modal fade">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add To Cart</h5>
+            <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="{{ route('web.cart.add') }}" method="post">
+              {{ csrf_field() }}
+              <input type="hidden" id="modal-varian-id" name="varian_id" value="">
+              <div class="form-group">
+                <input id="qty-modal" type="text" name="qty" placeholder="QTY" class="form-control">
+              </div>
+              <p class="text-center">
+                <button class="btn btn-primary" type="submit"><i class="fa fa-plus"></i> ADD</button>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
  
 @endsection
 
@@ -77,6 +106,12 @@
 
 		$(function() {
 			$('.varianId').on('change', function() {
+				if ($(this).val().length > 0) {
+					$('#btn-add-tocart').removeClass('disabled');
+					$('#modal-varian-id').val($(this).val());
+				} else {
+					$('#btn-add-tocart').addClass('disabled');
+				}
 				getVarianDetail($(this).val());
 			})
 		});

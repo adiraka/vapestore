@@ -52,7 +52,7 @@
     <div class="container">
       <a href="{{ route('web.homePage') }}" class="navbar-brand home">
         <img src="{{ asset('image/logo.png') }}" alt="Obaju logo" class="d-none d-md-inline-block">
-        <img src="{{ asset('web/img/logo-small.png') }}" alt="Obaju logo" class="d-inline-block d-md-none">
+        <img src="{{ asset('image/logo.png') }}" alt="Obaju logo" class="d-inline-block d-md-none">
         <span class="sr-only">Obaju - go to homepage</span>
       </a>
       <div class="navbar-buttons">
@@ -60,11 +60,11 @@
           <span class="sr-only">Toggle navigation</span>
           <i class="fa fa-align-justify"></i>
         </button>
-        <button type="button" data-toggle="collapse" data-target="#search" class="btn btn-outline-secondary navbar-toggler">
+        {{-- <button type="button" data-toggle="collapse" data-target="#search" class="btn btn-outline-secondary navbar-toggler">
           <span class="sr-only">Toggle search</span>
           <i class="fa fa-search"></i>
-        </button>
-        <a href="basket.html" class="btn btn-outline-secondary navbar-toggler">
+        </button> --}}
+        <a href="{{ route('web.cart.list') }}" class="btn btn-outline-secondary navbar-toggler">
           <i class="fa fa-shopping-cart"></i>
         </a>
       </div>
@@ -100,12 +100,12 @@
         </ul>
         <div class="navbar-buttons d-flex justify-content-end">
           <div id="search-not-mobile" class="navbar-collapse collapse"></div>
-          <a data-toggle="collapse" href="#search" class="btn navbar-btn btn-primary d-none d-lg-inline-block">
+          {{-- <a data-toggle="collapse" href="#search" class="btn navbar-btn btn-primary d-none d-lg-inline-block">
             <span class="sr-only">Toggle search</span>
             <i class="fa fa-search"></i>
-          </a>
+          </a> --}}
           <div id="basket-overview" class="navbar-collapse collapse d-none d-lg-block">
-            <a href="basket.html" class="btn btn-primary navbar-btn">
+            <a href="{{ route('web.cart.list') }}" class="btn btn-primary navbar-btn">
               <i class="fa fa-shopping-cart"></i>
               <span></span>
             </a>

@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Model\Product;
+use App\Model\Varian;
 use App\Util\Constant;
 
 class ProductService
@@ -19,5 +20,16 @@ class ProductService
 		}
 
 		return $result;
+	}
+
+	public static function CheckQty($varian_id, $qty) {
+		$flag = true;
+		$varian = Varian::find($varian_id);
+
+		if ($varian->quantity < $qty) {
+			$flag = false;
+		}
+
+		return $flag;
 	}
 }

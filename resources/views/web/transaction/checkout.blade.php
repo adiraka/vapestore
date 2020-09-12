@@ -78,21 +78,30 @@
                         <br>
                         <div class="content">
                             <div class="row">
-                                <div class="col-md-8">
-                                    <select name="courier" id="courier" class="form-control">
-                                        <option value=""></option>
-                                        @foreach (\App\Util\Constant::COURIER_LABEL as $key => $data)
-                                            <option value="{{ $key }}">{{ $data }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1">IDR</span>
+                                <div class="col-md-12">
+                                    @foreach ($courierList as $data)
+                                        <div>
+                                            <p><strong>{{ $data['name'] }}</strong></p>
+                                            @foreach ($data['costs'] as $cost)
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="radio" name="delivery" value="{{ json_encode($cost) }}">
+                                                            </td>
+                                                            <td>&nbsp;</td>
+                                                            <td>{{ $cost['description'] }}</td>
+                                                            <td>|</td>
+                                                            <td>{{ $cost['cost'][0]['etd'] }}</td>
+                                                            <td>|</td>
+                                                            <td><strong>IDR {{ number_format($cost['cost'][0]['value']) }}</strong></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            @endforeach
                                         </div>
-                                        <input type="text" name="cost" id="cost" class="form-control" value="" readonly>
-                                    </div>
+                                        <br>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -111,3 +120,11 @@
 	</div>
  
 @endsection
+
+@push('scripts')
+    <script>
+        $(function() {
+            
+        }); 
+    </script>
+@endpush

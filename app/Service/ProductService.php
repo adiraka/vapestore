@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use Cart;
 use App\Model\Product;
 use App\Model\Varian;
 use App\Util\Constant;
@@ -31,5 +32,17 @@ class ProductService
 		}
 
 		return $flag;
+	}
+
+	public static function GetTotalWeight() {
+		$carts = Cart::content();
+		$weight = 1;
+		foreach ($carts as $cart) {
+			if ($cart->options->weight > 0) {
+				$weight += $cart->options->weight;
+			}
+		}
+
+		return $weight;
 	}
 }

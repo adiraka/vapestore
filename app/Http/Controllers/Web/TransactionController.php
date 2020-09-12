@@ -7,6 +7,7 @@ use Cart;
 use Midtrans;
 use App\Model\Varian;
 use App\Service\ProductService;
+use App\Service\RajaOngkirService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -18,10 +19,11 @@ class TransactionController extends Controller
 		}
 
 		$cartList = Cart::content();
-
+		
 		return view('web.transaction.checkout', [
 			'cartList' => $cartList,
-			'cart' => Cart::class
+			'cart' => Cart::class, 
+			'courierList' => RajaOngkirService::getListCourier()
 		]);
 	}
 

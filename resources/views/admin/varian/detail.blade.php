@@ -74,7 +74,7 @@
 
 	                            <div class="col-md-8">
 	                            	<div class="input-group">
-	                            		<input id="weight" type="number" step="0.01" min="0" class="form-control" name="weight" value="{{ $varian->weight }}">
+	                            		<input id="weight" type="number" min="0" class="form-control" name="weight" value="{{ $varian->weight }}">
 	                            		<div class="input-group-append">
 											<span class="input-group-text" id="basic-addon2">gram</span>
 										</div>

@@ -4,10 +4,13 @@
  
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-12 text-center">
-				<h3>{{ $message }}</h3>
-                <a href="{{ route('web.homePage') }}">Kembali Belanja</a>
-			</div>
+			<div id="checkout" class="col-lg-12">
+                <div class="box text-center">
+                    <h3>{{ $message }}</h3>
+                    <hr>
+                    <a href="{{ route('web.homePage') }}" class="btn btn-primary">Kembali Belanja</a>
+                </div>
+            </div>
 		</div>
 	</div>
 @endsection

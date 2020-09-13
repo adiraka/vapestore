@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Model\Order;
+use App\Model\Invoice;
 use App\Model\UserDetail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -40,5 +42,13 @@ class User extends Authenticatable
 
     public function detail() {
         return $this->hasOne(UserDetail::class, 'user_id');
+    }
+
+    public function orders() {
+        return $this->hasMany(Order::class, 'user_id');
+    }
+
+    public function invoices() {
+        return $this->hasMany(Invoice::class, 'user_id');
     }
 }

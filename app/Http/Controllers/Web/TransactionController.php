@@ -8,6 +8,8 @@ use Midtrans;
 use App\Model\Varian;
 use App\Service\ProductService;
 use App\Service\RajaOngkirService;
+use App\Service\TransactionService;
+use App\Service\MidtransService;;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -29,23 +31,19 @@ class TransactionController extends Controller
 
 	public function payment(Request $request) {
 		$data = (object)$request->all();
-		dd($data);
+
+		$invoice = TransactionService::createInvoice($data->grandTotal);
+		$order = TransactionService::createOrder($invoice->id, $data->courierName, $data->delivery, $data->grandTotal);
+
 		$params = array(
 		    'transaction_details' => array(
-		        'order_id' => rand(),
-		        'gross_amount' => 10000,
+		        'order_id' => $invoice->invoice_number,
+		        'gross_amount' => $invoice->total_amount,
 		    )
 		);
 
-		try {
-		  // Get Snap Payment Page URL
-		  $paymentRedirectUrl = Midtrans::createTransaction($params)->redirect_url;
-		  
-		  // Redirect to Snap Payment Page
-		  return redirect($paymentRedirectUrl);
-		}
-		catch (Exception $e) {
-		  echo $e->getMessage();
-		}
+		$paymentRedirectUrl = Midtrans::createTransaction($params)->redirect_url;
+		
+		return redirect($paymentRedirectUrl);
 	}
 }

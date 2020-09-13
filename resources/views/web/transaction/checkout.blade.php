@@ -88,7 +88,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>
-                                                                <input type="radio" data-cost="{{ $cost['cost'][0]['value'] }}" name="delivery" value="{{ json_encode($cost) }}" required>
+                                                                <input type="radio" data-cost="{{ $cost['cost'][0]['value'] }}" name="delivery" data-courier="{{ $data['name'] }}" value="{{ json_encode($cost) }}" required>
                                                             </td>
                                                             <td>&nbsp;</td>
                                                             <td>{{ $cost['description'] }}</td>
@@ -109,6 +109,7 @@
                         <hr>
                         <h3>Total Amount : IDR <span id="total-amount">{{ number_format($cart::total()) }}</span></h3>
                         <input type="hidden" name="grandTotal" id="grand-total" value="{{ $cart::total() }}">
+                        <input type="hidden" name="courierName" id="courier-name" value="">
                         <div class="box-footer d-flex justify-content-between">
                             <a href="{{ route('web.cart.list') }}" class="btn btn-outline-secondary">
                                 <i class="fa fa-chevron-left"></i>Back to cart
@@ -134,6 +135,7 @@
                 let grand_total = cost + total;
 
                 $('#grand-total').val(grand_total);
+                $('#courier-name').val($(this).data('courier'));
                 $('#total-amount').empty().append(number_format(grand_total));
             });
 

@@ -156,4 +156,13 @@ class Constant {
         self::COURIER_TIKI => 'TIKI',
         self::COURIER_POS => 'POS'
     ];
+
+    const INVOICE_STATUS_UNPAID = 'UNPAID';
+    const INVOICE_STATUS_PAID = 'PAID';
+
+    const ORDER_STATUS_PAYMENT = 'PAYMENT';
+    const ORDER_STATUS_PACKING = 'PACKING';
+    const ORDER_STATUS_SEND = 'SEND';
+    const ORDER_STATUS_COMPLETED = 'COMPLETED';
+    const ORDER_STATUS_CANCELLED = 'CANCELLED';
 }

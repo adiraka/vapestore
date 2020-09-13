@@ -62,7 +62,7 @@
 				html += '			<p class="price">' 
 				html += '				<del></del>'+value.priceRange 
 				html += '			</p>'
-				html += '			<p class="buttons"><a href="/product/detail/'+value.id+'" class="btn btn-outline-secondary">View detail</a><a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a></p>'
+				html += '			<p class="buttons"><a href="/product/detail/'+value.id+'" class="btn btn-outline-secondary">View detail</a></p>'
 				html += '		</div>'
 				html += '	</div>'
 				html += '</div>'

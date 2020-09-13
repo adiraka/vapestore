@@ -45,4 +45,12 @@ class ProductService
 
 		return $weight;
 	}
+
+	public static function SubsProductStock($varianId, $qty) {
+		$varian = Varian::find($varianId);
+		$varian->quantity = $varian->quantity - $qty;
+		$varian->save();
+
+		return $varian;
+	}
 }

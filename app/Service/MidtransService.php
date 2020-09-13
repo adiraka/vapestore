@@ -9,7 +9,7 @@ use App\Util\Constant;
 
 class MidtransService
 {
-	public static function SetPriceRange($product) {
+	public static function CreateTransaction($data) {
 		
 	}
 }

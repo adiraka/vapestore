@@ -61,6 +61,8 @@ class TransactionService
 			ProductService::SubsProductStock($orderDetail->varian_id, $orderDetail->qty);
 		}
 
+		Cart::destroy();
+		
 		return $order;
 	}
 

@@ -35,6 +35,8 @@ class MidtransController extends Controller
 		else if ($transaction == 'deny') {
 		      // TODO Set payment status in merchant's database to 'failure'
 		}
+
+		return response('Data Accepted');
 	}
 
 	public function finish() {

@@ -38,14 +38,20 @@ class MidtransController extends Controller
 	}
 
 	public function finish() {
-		return 'finish';
+		return view('web.transaction.complete', [
+			'message' => 'Terima Kasih Telah Belanja di VAPESTORE'
+		]);
 	}
 
 	public function unifinish() {
-		return 'unifinish';
+		return view('web.transaction.complete', [
+			'message' => 'Mohon Maaf Transaksi Anda Tidak Bisa Dilanjutkan.'
+		]);
 	}
 
 	public function error() {
-		return 'error';
+		return view('web.transaction.complete', [
+			'message' => 'Mohon Maaf, Terdapat Kesalahan Disaat Memproses Transaski'
+		]);
 	}
 }

@@ -54,7 +54,7 @@
                             <tfoot>
                                 <tr>
                                     <th colspan="5">Total</th>
-                                    <th colspan="2">IDR {{ $cart::subtotal() }}</th>
+                                    <th colspan="2">IDR {{ number_format($cart::subtotal()) }}</th>
                                 </tr>
                             </tfoot>
                         </table>

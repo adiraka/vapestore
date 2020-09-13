@@ -16,7 +16,8 @@
 		<div class="row">
 			<div id="checkout" class="col-lg-12">
                 <div class="box">
-                    <form method="post" action="checkout4.html">
+                    <form method="post" action="{{ route('web.payment') }}">
+                        {{ csrf_field() }}
                         <h3>Checkout</h3>
                         <hr>
                         <h3>Order review</h3>
@@ -52,7 +53,7 @@
                                     <tfoot>
                                         <tr>
                                             <th colspan="5">Total</th>
-                                            <th>IDR {{ $cart::subtotal() }}</th>
+                                            <th>IDR {{ number_format($cart::subtotal()) }}</th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -87,7 +88,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>
-                                                                <input type="radio" name="delivery" value="{{ json_encode($cost) }}">
+                                                                <input type="radio" data-cost="{{ $cost['cost'][0]['value'] }}" name="delivery" value="{{ json_encode($cost) }}" required>
                                                             </td>
                                                             <td>&nbsp;</td>
                                                             <td>{{ $cost['description'] }}</td>
@@ -105,6 +106,9 @@
                                 </div>
                             </div>
                         </div>
+                        <hr>
+                        <h3>Total Amount : IDR <span id="total-amount">{{ number_format($cart::total()) }}</span></h3>
+                        <input type="hidden" name="grandTotal" id="grand-total" value="{{ $cart::total() }}">
                         <div class="box-footer d-flex justify-content-between">
                             <a href="{{ route('web.cart.list') }}" class="btn btn-outline-secondary">
                                 <i class="fa fa-chevron-left"></i>Back to cart
@@ -124,7 +128,41 @@
 @push('scripts')
     <script>
         $(function() {
-            
+            $("input[name='delivery']").click(function() {
+                let cost = $(this).data('cost');
+                let total = parseInt('{{ $cart::total() }}');
+                let grand_total = cost + total;
+
+                $('#grand-total').val(grand_total);
+                $('#total-amount').empty().append(number_format(grand_total));
+            });
+
+            function number_format (number, decimals, decPoint, thousandsSep) { 
+             number = (number + '').replace(/[^0-9+\-Ee.]/g, '')
+             var n = !isFinite(+number) ? 0 : +number
+             var prec = !isFinite(+decimals) ? 0 : Math.abs(decimals)
+             var sep = (typeof thousandsSep === 'undefined') ? ',' : thousandsSep
+             var dec = (typeof decPoint === 'undefined') ? '.' : decPoint
+             var s = ''
+
+             var toFixedFix = function (n, prec) {
+              var k = Math.pow(10, prec)
+              return '' + (Math.round(n * k) / k)
+                .toFixed(prec)
+             }
+
+             // @todo: for IE parseFloat(0.55).toFixed(0) = 0;
+             s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.')
+             if (s[0].length > 3) {
+              s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep)
+             }
+             if ((s[1] || '').length < prec) {
+              s[1] = s[1] || ''
+              s[1] += new Array(prec - s[1].length + 1).join('0')
+             }
+
+             return s.join(dec)
+            }
         }); 
     </script>
 @endpush

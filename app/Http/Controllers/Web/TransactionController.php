@@ -19,7 +19,7 @@ class TransactionController extends Controller
 		}
 
 		$cartList = Cart::content();
-		
+
 		return view('web.transaction.checkout', [
 			'cartList' => $cartList,
 			'cart' => Cart::class, 
@@ -28,6 +28,8 @@ class TransactionController extends Controller
 	}
 
 	public function payment(Request $request) {
+		$data = (object)$request->all();
+		dd($data);
 		$params = array(
 		    'transaction_details' => array(
 		        'order_id' => rand(),

@@ -19,7 +19,7 @@ class InvoiceController extends Controller
     }
 
     public function indexData() {
-        $listData = Invoice::select(['*'])->get();
+        $listData = Invoice::select(['*'])->orderBy('id', 'DESC')->get();
         $dataTables = Datatables::of($listData)
                         ->addColumn('customer_name', function($invoice) {
                             return $invoice->user->detail->name;

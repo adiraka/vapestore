@@ -91,6 +91,10 @@ Route::prefix('admin')->group(function() {
         Route::get('invoicesData', 'Admin\InvoiceController@indexData')->name('invoice.indexData');
         Route::get('invoice/{id?}', 'Admin\InvoiceController@detail')->name('invoice.detail');
 
+        Route::get('orders', 'Admin\OrderController@index')->name('order.index');
+        Route::get('ordersData', 'Admin\OrderController@indexData')->name('order.indexData');
+        Route::get('order/{id?}', 'Admin\OrderController@detail')->name('order.detail');
+
         Route::get('midtrans/status/{id?}', 'Admin\MidtransController@status')->name('midtrans.status');
 
         Route::get('variansData/{productId?}', 'Admin\VarianController@indexData')->name('varian.indexData');

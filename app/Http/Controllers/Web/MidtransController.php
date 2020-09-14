@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Web;
 
 use Midtrans;
 use App\Model\ApiLog;
+use App\Model\Invoice;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Service\InvoiceService;
 
 class MidtransController extends Controller
 {
@@ -19,25 +21,26 @@ class MidtransController extends Controller
 
 		error_log("Order ID $notification->order_id: "."transaction status = $transaction, fraud staus = $fraud");
 
-		if ($transaction == 'capture') {
-		    if ($fraud == 'challenge') {
-		      // TODO Set payment status in merchant's database to 'challenge'
-		    }
-		    else if ($fraud == 'accept') {
-		      \Log::info(json_encode($notification));
-		    }
-		}
-		else if ($transaction == 'cancel') {
-		    if ($fraud == 'challenge') {
-		      // TODO Set payment status in merchant's database to 'failure'
-		    }
-		    else if ($fraud == 'accept') {
-		      // TODO Set payment status in merchant's database to 'failure'
-		    }
-		}
-		else if ($transaction == 'deny') {
-		      // TODO Set payment status in merchant's database to 'failure'
-		}
+		// if ($transaction == 'capture') {
+		//     if ($fraud == 'challenge') {
+		//     }
+		//     else if ($fraud == 'accept') {
+		//       \Log::info(json_encode($notification));
+		//     }
+		// }
+		// else if ($transaction == 'cancel') {
+		//     if ($fraud == 'challenge') {
+		//     }
+		//     else if ($fraud == 'accept') {
+		//     }
+		// }
+		// else if ($transaction == 'deny') {
+		// }
+		
+		if ($transaction == 'capture' || $transaction == 'settlement') {
+            $invoice = Invoice::where('invoice_number', $notification->order_id)->first();
+            InvoiceService::UpdateStatus($invoice, Constant::INVOICE_STATUS_PAID);
+        }
 
 		return response('Data Accepted');
 	}

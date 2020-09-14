@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Invoice')
+@section('title', 'Order')
 
 @section('content_header')
-    <h1>Invoice</h1>
+    <h1>Order</h1>
 @stop
 
 @section('content')
@@ -11,7 +11,7 @@
 		<div class="col-md-12">
 			<div class="card">
 				<div class="card-header">
-					Invoice List Table
+					Order List Table
 				</div>
 				<div class="card-body">
 					<div class="row">
@@ -56,12 +56,12 @@
 				buttons: [
 		            'csv', 'excel', 'pdf', 'print'
 		        ],
-				ajax: '{{ route('invoice.indexData') }}',
+				ajax: '{{ route('order.indexData') }}',
 				columns: [
 					{ data: 'id', name: 'id' },
-					{ data: 'invoice_number', name: 'invoice_number' },
+					{ data: 'order_number', name: 'order_number' },
 					{ data: 'customer_name', name: 'customer_name' },
-					{ data: 'invoice_date', name: 'invoice_date' },
+					{ data: 'order_date', name: 'order_date' },
 					{ data: 'total_amount', name: 'total_amount' },
 					{ data: 'status', name: 'status' },
 					{ data: 'action', name: 'action' },

@@ -5,14 +5,14 @@
 	@include('web.template.parts.slider-section', ['some' => 'data'])
 	{{-- @include('web.template.parts.advantage-section', ['some' => 'data']) --}}
 	@include('web.template.parts.hot-section', ['some' => 'data'])
-	@include('web.template.parts.blog-section', ['some' => 'data'])
+	{{-- @include('web.template.parts.blog-section', ['some' => 'data']) --}}
  
 @endsection
 
 @push('scripts')
 	<script type="text/javascript">
 		var currentPage = 1;
-		var currentLimit = 12;
+		var currentLimit = 20;
 		var category = '';
 
 		$(function() {

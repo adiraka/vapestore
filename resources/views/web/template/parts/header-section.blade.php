@@ -5,7 +5,6 @@
         <div class="col-lg-6 offer mb-3 mb-lg-0"></div>
         <div class="col-lg-6 text-center text-lg-right">
           <ul class="menu list-inline mb-0">
-            <li class="list-inline-item"><a href="contact.html">Contact</a></li>
             @if (Auth::check())
               <li class="list-inline-item"><a href="{{ route('web.account.detail') }}">My Account</a></li>
               <li class="list-inline-item"><a href="{{ route('web.logout') }}">Logout</a></li>
@@ -95,8 +94,6 @@
             </ul>
           </li>
           <li class="nav-item"><a href="{{ route('web.blog.list') }}" class="nav-link">Blog</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
         </ul>
         <div class="navbar-buttons d-flex justify-content-end">
           <div id="search-not-mobile" class="navbar-collapse collapse"></div>

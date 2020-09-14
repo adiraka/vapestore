@@ -195,8 +195,8 @@ return [
             'icon' => 'fas fa-fw fa-shopping-cart',
         ],
         [
-            'text' => 'Payment',
-            'url'  => 'admin/payments',
+            'text' => 'Invoice',
+            'url'  => 'admin/invoices',
             'icon' => 'fas fa-fw fa-book',
         ],
         [

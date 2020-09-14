@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use Midtrans;
+use App\Model\ApiLog;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -10,6 +11,8 @@ class MidtransController extends Controller
 {
 	public function handlingCallback(Request $request) {
 		$notification = Midtrans::notification();
+
+		
 
 		$transaction = $notification->transaction_status;
 		$fraud = $notification->fraud_status;

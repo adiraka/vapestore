@@ -87,6 +87,12 @@ Route::prefix('admin')->group(function() {
         Route::get('product/{id?}', 'Admin\ProductController@detail')->name('product.detail');
         Route::post('product/{id?}', 'Admin\ProductController@save')->name('product.save');
 
+        Route::get('invoices', 'Admin\InvoiceController@index')->name('invoice.index');
+        Route::get('invoicesData', 'Admin\InvoiceController@indexData')->name('invoice.indexData');
+        Route::get('invoice/{id?}', 'Admin\InvoiceController@detail')->name('invoice.detail');
+
+        Route::get('midtrans/status/{id?}', 'Admin\MidtransController@status')->name('midtrans.status');
+
         Route::get('variansData/{productId?}', 'Admin\VarianController@indexData')->name('varian.indexData');
         Route::get('varian/changeStatus/{id?}', 'Admin\VarianController@changeStatus')->name('varian.changeStatus');
         Route::get('varian/{id?}/{productId?}', 'Admin\VarianController@detail')->name('varian.detail');

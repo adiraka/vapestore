@@ -8,13 +8,12 @@ use App\Model\Invoice;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Service\InvoiceService;
+use App\Util\Constant;
 
 class MidtransController extends Controller
 {
 	public function handlingCallback(Request $request) {
 		$notification = Midtrans::notification();
-
-		
 
 		$transaction = $notification->transaction_status;
 		$fraud = $notification->fraud_status;

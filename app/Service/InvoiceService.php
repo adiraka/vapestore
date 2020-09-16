@@ -17,6 +17,8 @@ class InvoiceService
 
 		if ($newStatus == Constant::INVOICE_STATUS_PAID) {
 			OrderService::UpdateStatus($invoice->order, Constant::ORDER_STATUS_PACKING);
+		} else if ($newStatus == Constant::INVOICE_STATUS_EXPIRED) {
+			OrderService::UpdateStatus($invoice->order, Constant::ORDER_STATUS_CANCELLED);
 		}
 	}
 }

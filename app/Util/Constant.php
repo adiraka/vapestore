@@ -159,6 +159,7 @@ class Constant {
 
     const INVOICE_STATUS_UNPAID = 'UNPAID';
     const INVOICE_STATUS_PAID = 'PAID';
+    const INVOICE_STATUS_EXPIRED = 'EXPIRED';
 
     const ORDER_STATUS_PAYMENT = 'PAYMENT';
     const ORDER_STATUS_PACKING = 'PACKING';

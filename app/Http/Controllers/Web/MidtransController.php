@@ -14,31 +14,15 @@ class MidtransController extends Controller
 {
 	public function handlingCallback(Request $request) {
 		$notification = Midtrans::notification();
+		$invoice = Invoice::where('invoice_number', $notification->order_id)->first();
 
 		$transaction = $notification->transaction_status;
 		$fraud = $notification->fraud_status;
 
-		error_log("Order ID $notification->order_id: "."transaction status = $transaction, fraud staus = $fraud");
-
-		// if ($transaction == 'capture') {
-		//     if ($fraud == 'challenge') {
-		//     }
-		//     else if ($fraud == 'accept') {
-		//       \Log::info(json_encode($notification));
-		//     }
-		// }
-		// else if ($transaction == 'cancel') {
-		//     if ($fraud == 'challenge') {
-		//     }
-		//     else if ($fraud == 'accept') {
-		//     }
-		// }
-		// else if ($transaction == 'deny') {
-		// }
-		
 		if ($transaction == 'capture' || $transaction == 'settlement') {
-            $invoice = Invoice::where('invoice_number', $notification->order_id)->first();
             InvoiceService::UpdateStatus($invoice, Constant::INVOICE_STATUS_PAID);
+        } elseif ($transaction == 'deny') {
+        	InvoiceService::UpdateStatus($invoice, Constant::EXPIRED);
         }
 
 		return response('Data Accepted');

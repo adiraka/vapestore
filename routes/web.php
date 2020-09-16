@@ -94,6 +94,7 @@ Route::prefix('admin')->group(function() {
         Route::get('orders', 'Admin\OrderController@index')->name('order.index');
         Route::get('ordersData', 'Admin\OrderController@indexData')->name('order.indexData');
         Route::get('order/{id?}', 'Admin\OrderController@detail')->name('order.detail');
+        Route::post('order-change-status', 'Admin\OrderController@changeStatus')->name('order.changeStatus');
 
         Route::get('midtrans/status/{id?}', 'Admin\MidtransController@status')->name('midtrans.status');
 

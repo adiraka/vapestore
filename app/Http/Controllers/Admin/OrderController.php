@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 use App\Model\Order;
 use App\Model\OrderDetail;
+use App\Service\OrderService;
+use App\Service\InvoiceService;
 
 use Response;
 use Validator;
@@ -44,6 +46,25 @@ class OrderController extends Controller
         
         return view('admin.order.detail', [
             'order' => $order
+        ]);
+    }
+
+    public function changeStatus(Request $request) {
+        $data = (object)$request->all();
+
+        $order = Order::find($data->order);
+
+        OrderService::UpdateStatus($order, $data->status);
+
+        if ($data->status == Constant::ORDER_STATUS_SEND) {
+            $order->delivery_receipt = $data->delivery_receipt;
+            $order->save();
+        } elseif ($data->status == Constant::CANCELLED) {
+            
+        }
+
+        return redirect()->back()->with([
+            'Order status has been updated!'
         ]);
     }
 }

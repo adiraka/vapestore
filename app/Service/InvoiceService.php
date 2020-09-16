@@ -20,5 +20,7 @@ class InvoiceService
 		} else if ($newStatus == Constant::INVOICE_STATUS_EXPIRED) {
 			OrderService::UpdateStatus($invoice->order, Constant::ORDER_STATUS_CANCELLED);
 		}
+
+		return $invoice;
 	}
 }

@@ -22,7 +22,7 @@ class OrderController extends Controller
     }
 
     public function indexData() {
-        $listData = Order::select(['*'])->orderBy('id', 'DESC')->get();
+        $listData = Order::select(['*'])->orderBy('id', 'desc');
         $dataTables = Datatables::of($listData)
                         ->addColumn('customer_name', function($order) {
                             return $order->user->detail->name;

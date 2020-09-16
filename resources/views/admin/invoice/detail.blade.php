@@ -46,7 +46,7 @@
 								<tr>
 									<th>Order Number</th>
 									<td>&nbsp;</td>
-									<td>{{ $invoice->order->order_number }}</td>
+									<td><a href="{{ route('order.detail', ['id' => $invoice->order->id]) }}" target="_blank">{{ $invoice->order->order_number }}</a></td>
 								</tr>
 								<tr>
 									<th>Total Amount</th>

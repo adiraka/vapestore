@@ -20,7 +20,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         '/product/list',
-        '/varian/detail'
+        '/varian/detail',
         '/midtrans-notification/handling'
     ];
 }

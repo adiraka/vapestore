@@ -51,7 +51,7 @@
 	                        			<td>{{ \Carbon\Carbon::parse($order->order_date)->format('d M Y') }}</td>
 	                        			<td>IDR {{ number_format($order->total_amount) }}</td>
 	                        			<td>{{ $order->status }}</td>
-	                        			<td><a href="customer-order.html" class="btn btn-primary btn-sm">View</a></td>
+	                        			<td><a href="{{ route('web.account.getDetailOrder', ['id' => $order->order_number]) }}" class="btn btn-primary btn-sm">View</a></td>
 	                      			</tr>
                     			@endforeach
                     		</tbody>

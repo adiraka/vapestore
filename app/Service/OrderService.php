@@ -17,11 +17,13 @@ class OrderService
 		$order->save();
 
 		if ($oldStatus == Constant::ORDER_STATUS_PAYMENT && $newStatus == Constant::ORDER_STATUS_PACKING) {
-			# code...
+
 		} elseif ($oldStatus == Constant::ORDER_STATUS_PACKING && $newStatus == Constant::ORDER_STATUS_SEND) {
 
+		} elseif ($oldStatus == Constant::ORDER_STATUS_SEND && $newStatus == Constant::ORDER_STATUS_COMPLETED) {
+
 		} elseif ($oldStatus == Constant::ORDER_STATUS_PAYMENT && $newStatus == Constant::ORDER_STATUS_CANCELLED) {
-			// return stock
+
 		}
 
 		return $order;

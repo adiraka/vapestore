@@ -65,6 +65,7 @@
 						</div>
 						<div class="col-md-12">
 							@if ($invoice->status == \App\Util\Constant::INVOICE_STATUS_UNPAID && $invoice->order->status == \App\Util\Constant::ORDER_STATUS_PAYMENT)
+								<a href="{{ route('midtrans.reject', ['id' => $invoice->invoice_number]) }}" class="btn btn-danger">Reject Payment</a>
 								<a href="{{ route('midtrans.status', ['id' => $invoice->invoice_number]) }}" class="btn btn-success">Check Status Payment</a>
 							@endif
 							

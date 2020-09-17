@@ -28,4 +28,15 @@ class MidtransController extends Controller
 
         return redirect()->back();
     }
+
+    public function reject($id) {
+        $reject = MidtransService::cancel($id);
+
+        if ($reject == '200') {
+            $invoice = Invoice::where('invoice_number', $id)->first();
+            InvoiceService::UpdateStatus($invoice, Constant::INVOICE_STATUS_EXPIRED);
+        }
+        
+        return redirect()->back();
+    }
 }

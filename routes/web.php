@@ -33,9 +33,6 @@ Route::post('cart/update', 'Web\CartController@postUpdateCart')->name('web.cart.
 Route::get('cart/remove/{id}', 'Web\CartController@removeCart')->name('web.cart.remove');
 Route::get('cart/destroy', 'Web\CartController@destroyCart')->name('web.cart.destroy');
 
-Route::get('checkout', 'Web\TransactionController@checkout')->name('web.checkout');
-Route::post('payment', 'Web\TransactionController@payment')->name('web.payment');
-
 Route::get('provinces', 'Web\RajaOngkirController@getAllProvinces')->name('web.provinces');
 Route::get('cities/{province_id?}', 'Web\RajaOngkirController@getCities')->name('web.cities');
 
@@ -54,6 +51,9 @@ Route::post('varian/detail', 'Web\ProductController@getVarianDetail')->name('web
 Route::middleware(['auth.customer'])->group(function() {
     Route::get('account/detail', 'Web\AccountController@getAccountDetail')->name('web.account.detail');
     Route::post('account/detail', 'Web\AccountController@postAccountDetail')->name('web.account.postDetail');
+
+    Route::get('checkout', 'Web\TransactionController@checkout')->name('web.checkout');
+    Route::post('payment', 'Web\TransactionController@payment')->name('web.payment');
 });
 
 

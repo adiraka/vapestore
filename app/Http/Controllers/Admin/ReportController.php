@@ -14,6 +14,12 @@ use App\Util\Constant;
 class ReportController extends Controller
 {
 	public function index() {
-		return 'report page';
+		return view('admin.report.index');
+	}
+
+	public function generateOrderMonthlyReport(Request $request) {
+		$data = (object)$request->all();
+
+		dd($data);
 	}
 }

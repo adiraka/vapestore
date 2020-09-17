@@ -52,6 +52,8 @@ Route::middleware(['auth.customer'])->group(function() {
     Route::get('account/detail', 'Web\AccountController@getAccountDetail')->name('web.account.detail');
     Route::post('account/detail', 'Web\AccountController@postAccountDetail')->name('web.account.postDetail');
 
+    Route::get('order/list', 'Web\AccountController@getListOrder')->name('web.account.getListOrder');
+
     Route::get('checkout', 'Web\TransactionController@checkout')->name('web.checkout');
     Route::post('payment', 'Web\TransactionController@payment')->name('web.payment');
 });

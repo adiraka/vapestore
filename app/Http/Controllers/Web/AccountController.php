@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use Auth;
+use App\Model\Order;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -39,5 +40,15 @@ class AccountController extends Controller
 		$account->save();
 
 		return redirect()->back()->with('success', 'Successfully update account info.');
+	}
+
+	public function getListOrder() {
+		$userId = Auth::user()->id;
+
+		$orders = Order::where('user_id', $userId)->paginate(10);
+
+		return view('web.account.order-list', [
+			'orders' => $orders
+		]);
 	}
 }

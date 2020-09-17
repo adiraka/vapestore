@@ -22,7 +22,7 @@
 					<div class="card-body">
 						<ul class="nav nav-pills flex-column">
 							<a href="{{ route('web.account.detail') }}" class="nav-link active"><i class="fa fa-user"></i> My account</a>
-							<a href="customer-orders.html" class="nav-link"><i class="fa fa-list"></i> My orders</a>
+							<a href="{{ route('web.account.getListOrder') }}" class="nav-link"><i class="fa fa-list"></i> My orders</a>
 							<a href="{{ route('web.logout') }}" class="nav-link"><i class="fa fa-sign-out"></i> Logout</a>
 						</ul>
 					</div>

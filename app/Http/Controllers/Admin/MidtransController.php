@@ -23,6 +23,9 @@ class MidtransController extends Controller
             if ($status->transaction_status == 'capture' || $status->transaction_status == 'settlement') {
                 $invoice = Invoice::where('invoice_number', $id)->first();
                 InvoiceService::UpdateStatus($invoice, Constant::INVOICE_STATUS_PAID);
+            } elseif ($status->transaction_status == 'cancel' || $status->transaction_status == 'deny') {
+                $invoice = Invoice::where('invoice_number', $id)->first();
+                InvoiceService::UpdateStatus($invoice, Constant::INVOICE_STATUS_EXPIRED);
             }
         }
 

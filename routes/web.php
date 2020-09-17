@@ -75,6 +75,10 @@ Route::prefix('admin')->group(function() {
         Route::get('dashboard', 'Admin\DashboardController@getDashboard')->name('admin.dashboard');
         Route::post('logout', 'Admin\AuthController@logout')->name('admin.logout');
 
+        Route::get('customers', 'Admin\CustomerController@index')->name('customer.index');
+        Route::get('customersData', 'Admin\CustomerController@indexData')->name('customer.indexData');
+        Route::get('customer/{id?}', 'Admin\CustomerController@detail')->name('customer.detail');
+
         Route::get('merks', 'Admin\MerkController@index')->name('merk.index');
         Route::get('merksData', 'Admin\MerkController@indexData')->name('merk.indexData');
         Route::get('merk/{id?}', 'Admin\MerkController@detail')->name('merk.detail');

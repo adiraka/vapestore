@@ -211,7 +211,7 @@ return [
         ],
         [
             'text' => 'Customer',
-            'url'  => 'admin/cutomers',
+            'url'  => 'admin/customers',
             'icon' => 'fas fa-fw fa-user',
         ]
         // [

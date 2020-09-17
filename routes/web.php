@@ -120,5 +120,7 @@ Route::prefix('admin')->group(function() {
         Route::get('blog/changeStatus/{id?}', 'Admin\BlogController@changeStatus')->name('blog.changeStatus');
         Route::get('blog/{id?}', 'Admin\BlogController@detail')->name('blog.detail');
         Route::post('blog/{id?}', 'Admin\BlogController@save')->name('blog.save');
+
+        Route::get('reports', 'Admin\ReportController@index')->name('report.index');
     });
 });

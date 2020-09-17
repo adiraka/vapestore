@@ -210,6 +210,11 @@ return [
             'icon' => 'fas fa-fw fa-book',
         ],
         [
+            'text' => 'Report',
+            'url'  => 'admin/reports',
+            'icon' => 'fas fa-fw fa-book',
+        ],
+        [
             'text' => 'Customer',
             'url'  => 'admin/customers',
             'icon' => 'fas fa-fw fa-user',

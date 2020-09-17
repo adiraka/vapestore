@@ -42,9 +42,6 @@ Route::get('cities/{province_id?}', 'Web\RajaOngkirController@getCities')->name(
 Route::get('blog/list', 'Web\BlogController@getBlogList')->name('web.blog.list');
 Route::get('blog/detail/{id}', 'Web\BlogController@getBlogDetail')->name('web.blog.detail');
 
-Route::get('account/detail', 'Web\AccountController@getAccountDetail')->name('web.account.detail');
-Route::post('account/detail', 'Web\AccountController@postAccountDetail')->name('web.account.postDetail');
-
 Route::post('midtrans-notification/handling', 'Web\MidtransController@handlingCallback')->name('web.midtrans.handling');
 Route::get('midtrans-notification/finish', 'Web\MidtransController@finish')->name('web.midtrans.finish');
 Route::get('midtrans-notification/unfinish', 'Web\MidtransController@unfinish')->name('web.midtrans.unfinish');
@@ -53,6 +50,11 @@ Route::get('midtrans-notification/error', 'Web\MidtransController@error')->name(
 // API
 Route::post('product/list', 'Web\ProductController@getProductList')->name('web.product.list');
 Route::post('varian/detail', 'Web\ProductController@getVarianDetail')->name('web.varian.detail');
+
+Route::middleware(['auth.customer'])->group(function() {
+    Route::get('account/detail', 'Web\AccountController@getAccountDetail')->name('web.account.detail');
+    Route::post('account/detail', 'Web\AccountController@postAccountDetail')->name('web.account.postDetail');
+});
 
 
 Route::prefix('admin')->group(function() {

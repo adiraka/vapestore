@@ -122,5 +122,6 @@ Route::prefix('admin')->group(function() {
         Route::post('blog/{id?}', 'Admin\BlogController@save')->name('blog.save');
 
         Route::get('reports', 'Admin\ReportController@index')->name('report.index');
+        Route::post('report/order/generate/monthly', 'Admin\ReportController@generateOrderMonthlyReport')->name('report.order.monthly');
     });
 });

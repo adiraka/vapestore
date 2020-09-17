@@ -21,7 +21,7 @@ class MidtransController extends Controller
 
 		if ($transaction == 'capture' || $transaction == 'settlement') {
             InvoiceService::UpdateStatus($invoice, Constant::INVOICE_STATUS_PAID);
-        } elseif ($transaction == 'deny') {
+        } elseif ($transaction == 'deny' || $transaction == 'cancel') {
         	InvoiceService::UpdateStatus($invoice, Constant::EXPIRED);
         }
 

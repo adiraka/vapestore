@@ -104,6 +104,7 @@ Route::prefix('admin')->group(function() {
 
         Route::get('midtrans/status/{id?}', 'Admin\MidtransController@status')->name('midtrans.status');
         Route::get('midtrans/reject/{id?}', 'Admin\MidtransController@reject')->name('midtrans.reject');
+        Route::get('midtrans/approve/{id?}', 'Admin\MidtransController@approve')->name('midtrans.approve');
 
         Route::get('variansData/{productId?}', 'Admin\VarianController@indexData')->name('varian.indexData');
         Route::get('varian/changeStatus/{id?}', 'Admin\VarianController@changeStatus')->name('varian.changeStatus');

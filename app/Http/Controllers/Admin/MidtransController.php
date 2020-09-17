@@ -39,4 +39,15 @@ class MidtransController extends Controller
         
         return redirect()->back();
     }
+
+    public function approve($id) {
+        // $approve = MidtransService::approve($id);
+        // dd($approve);
+        // if ($reject == '200') {
+        //     $invoice = Invoice::where('invoice_number', $id)->first();
+        //     InvoiceService::UpdateStatus($invoice, Constant::INVOICE_STATUS_EXPIRED);
+        // }
+        
+        // return redirect()->back();
+    }
 }
